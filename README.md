@@ -15,6 +15,7 @@ Features
 - 2D Sound Library.
 - Built In Delta Time.
 - Comes With A Vector, Maths & Matrix Library (VML).
+- And Much More!
 
 Supported File Types
 
