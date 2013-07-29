@@ -213,9 +213,11 @@
   <ItemGroup>
     <ClCompile Include="Source\Collision\Collision.cpp" />
     <ClCompile Include="Source\Input\Input.cpp" />
+    <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Rendering\Camera\Camera.cpp" />
     <ClCompile Include="Source\Rendering\Font\Font.cpp" />
     <ClCompile Include="Source\Rendering\GUI\GUIButton.cpp" />
+    <ClCompile Include="Source\Rendering\Particles\Particles.cpp" />
     <ClCompile Include="Source\Rendering\Primitive\PrimitiveSquare.cpp" />
     <ClCompile Include="Source\Rendering\Primitive\PrimitiveTriangle.cpp" />
     <ClCompile Include="Source\Rendering\Sprite\Sprite.cpp" />
@@ -232,6 +234,7 @@
     <ClInclude Include="Source\Rendering\Camera\Camera.h" />
     <ClInclude Include="Source\Rendering\Font\Font.h" />
     <ClInclude Include="Source\Rendering\GUI\GUI.h" />
+    <ClInclude Include="Source\Rendering\Particles\Particles.h" />
     <ClInclude Include="Source\Rendering\Primitive\Primitive.h" />
     <ClInclude Include="Source\Rendering\Sprite\Sprite.h" />
     <ClInclude Include="Source\ResourceLoading\Texture\Texture.h" />

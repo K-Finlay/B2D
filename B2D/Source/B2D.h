@@ -4,6 +4,7 @@
 #include "Rendering/Camera/Camera.h"
 #include "Rendering/Font/Font.h"
 #include "Rendering/GUI/GUI.h"
+#include "Rendering/Particles/Particles.h"
 #include "Rendering/Primitive/Primitive.h"
 #include "Rendering/Sprite/Sprite.h"
 #include "ResourceLoading/Texture/Texture.h"
