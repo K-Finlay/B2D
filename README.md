@@ -9,6 +9,7 @@ Features
 - Extremely Fast Rendering.
 - Built In Primitive And Sprite Classes.
 - Easy Sprite Animation.
+- Built In Particle System.
 - Basic Collision Detection (Circle And Box).
 - Basic GUI Class.
 - Font Rendering.
