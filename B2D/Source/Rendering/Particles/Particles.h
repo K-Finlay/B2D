@@ -16,7 +16,7 @@ namespace b2d{
     	ParticleEmitter (Vector2::Point Position, char* TexturePath, float FadeRate = 1.0f, RGBA Colour = RGBA (1.0f, 1.0f, 1.0f, 1.0f));
 		
 		// Functions
-		void SetEmissionRate (float EmissionRate);
+		void SetEmissionRate (float EmissionRate, int EmissionNumber = 1);
 		void SetMaxParticles (int MaxParticles);
 		void SetParticleHealth (float MinLife, float MaxLife);
 		void SetParticleSize (float MinSize, float MaxSize);
@@ -31,6 +31,7 @@ namespace b2d{
 		std::vector <float> sizeList;
 		std::vector <Vector2::Point> velocityList;
 		int maxParticles;
+		int emissionNumber;
 		float emissionRate;
 		float minLife, maxLife;
 		float minSize, maxSize;

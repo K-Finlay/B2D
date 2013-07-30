@@ -27,8 +27,10 @@ namespace b2d{
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// Set The Particle Emission Rate
-	void ParticleEmitter::SetEmissionRate (float EmissionRate){
+	void ParticleEmitter::SetEmissionRate (float EmissionRate, int EmissionNumber){
+
 		ParticleEmitter::emissionRate = EmissionRate / 100;
+		ParticleEmitter::emissionNumber = EmissionNumber;
 	}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -89,28 +91,32 @@ namespace b2d{
 		// Check If New Particle Can Be Created
 		if (ParticleEmitter::timer >= ParticleEmitter::emissionRate && (int) ParticleEmitter::particleList.size() <= ParticleEmitter::maxParticles && ParticleEmitter::canEmit){
 
-			// Set Particle Variables
-			float particleSize = float (rand()) / float (RAND_MAX) * (ParticleEmitter::maxSize - ParticleEmitter::minSize) + ParticleEmitter::minSize;
-			float particleHealth = float (rand()) / float (RAND_MAX) * (ParticleEmitter::maxLife - ParticleEmitter::minLife) + ParticleEmitter::minLife;
+			// Create Required Num Of Particles
+			for (int i = 0; i < ParticleEmitter::emissionNumber; ++i){
 
-			Vector2::Point particleVelocity;
-			particleVelocity.x = float (rand()) / float (RAND_MAX) * (ParticleEmitter::maxVelocity.x - ParticleEmitter::minVelocity.x) + ParticleEmitter::minVelocity.x;
-			particleVelocity.y = float (rand()) / float (RAND_MAX) * (ParticleEmitter::maxVelocity.y - ParticleEmitter::minVelocity.y) + ParticleEmitter::minVelocity.y;
-
-			// Add Variables To Lists
-			ParticleEmitter::lifeList.push_back (particleHealth);
-			ParticleEmitter::sizeList.push_back (particleSize);
-			ParticleEmitter::velocityList.push_back (particleVelocity);
-
-			// Create New Particle
-			Sprite* newParticle = new Sprite (ParticleEmitter::position, (int) particleSize, (int) particleSize, "NULL");
-
-			// Set Particle Texture
-			newParticle[0].glTex = ParticleEmitter::glTexture;
-
-			// Add Particle To List
-			ParticleEmitter::particleList.push_back (newParticle[0]);
-			delete (newParticle);
+			    // Set Particle Variables
+			    float particleSize = float (rand()) / float (RAND_MAX) * (ParticleEmitter::maxSize - ParticleEmitter::minSize) + ParticleEmitter::minSize;
+			    float particleHealth = float (rand()) / float (RAND_MAX) * (ParticleEmitter::maxLife - ParticleEmitter::minLife) + ParticleEmitter::minLife;
+			    
+			    Vector2::Point particleVelocity;
+			    particleVelocity.x = float (rand()) / float (RAND_MAX) * (ParticleEmitter::maxVelocity.x - ParticleEmitter::minVelocity.x) + ParticleEmitter::minVelocity.x;
+			    particleVelocity.y = float (rand()) / float (RAND_MAX) * (ParticleEmitter::maxVelocity.y - ParticleEmitter::minVelocity.y) + ParticleEmitter::minVelocity.y;
+			    
+			    // Add Variables To Lists
+			    ParticleEmitter::lifeList.push_back (particleHealth);
+			    ParticleEmitter::sizeList.push_back (particleSize);
+			    ParticleEmitter::velocityList.push_back (particleVelocity);
+			    
+			    // Create New Particle
+			    Sprite* newParticle = new Sprite (ParticleEmitter::position, (int) particleSize, (int) particleSize, "NULL");
+			    
+			    // Set Particle Texture
+			    newParticle[0].glTex = ParticleEmitter::glTexture;
+			    
+			    // Add Particle To List
+			    ParticleEmitter::particleList.push_back (newParticle[0]);
+			    delete (newParticle);
+			}
 
 			// Reset Timer
 			ParticleEmitter::timer = 0.0;
