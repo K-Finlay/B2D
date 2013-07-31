@@ -16,7 +16,7 @@ namespace b2d{
 		~Font();
 
 		// Functions
-		void Draw();
+		void Render();
 		void Move (float X, float Y);
 		void Translate (float X, float Y);
 		void SetTexture (char* TexturePath);

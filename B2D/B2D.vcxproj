@@ -217,7 +217,8 @@
     <ClCompile Include="Source\Rendering\Camera\Camera.cpp" />
     <ClCompile Include="Source\Rendering\Font\Font.cpp" />
     <ClCompile Include="Source\Rendering\GUI\GUIButton.cpp" />
-    <ClCompile Include="Source\Rendering\Particles\Particles.cpp" />
+    <ClCompile Include="Source\Rendering\Particles\ParticleLine.cpp" />
+    <ClCompile Include="Source\Rendering\Particles\ParticlePoint.cpp" />
     <ClCompile Include="Source\Rendering\Primitive\PrimitiveSquare.cpp" />
     <ClCompile Include="Source\Rendering\Primitive\PrimitiveTriangle.cpp" />
     <ClCompile Include="Source\Rendering\Sprite\Sprite.cpp" />

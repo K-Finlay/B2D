@@ -57,7 +57,10 @@
     <ClCompile Include="Source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Rendering\Particles\Particles.cpp">
+    <ClCompile Include="Source\Rendering\Particles\ParticlePoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Rendering\Particles\ParticleLine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
