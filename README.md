@@ -15,6 +15,7 @@ Features
 - Font Rendering.
 - 2D Sound Library.
 - Built In Delta Time.
+- Python Scripting Support.
 - Comes With A Vector, Maths & Matrix Library (VML).
 - And Much More!
 
