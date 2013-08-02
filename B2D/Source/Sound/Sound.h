@@ -16,7 +16,11 @@ namespace b2d{
 
 		// Functions
 		void Play();
+		void Pause();
 		void Stop();
+		void SetVolume (float Volume);
+		void SetPan (float Pan);
+		void SetPitch (float Pitch);
 
 		// Variables
 		bool soundIsPlaying;
