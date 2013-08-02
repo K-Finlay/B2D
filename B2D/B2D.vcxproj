@@ -66,8 +66,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(PYTHONPATH);$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(PYTHONLIBS);$(ProjectDir)lib;$(LibraryPath)</LibraryPath>
     <TargetName>B2D_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -214,6 +214,9 @@
     <ClCompile Include="Source\Collision\Collision.cpp" />
     <ClCompile Include="Source\Input\Input.cpp" />
     <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\Python\Py.cpp" />
+    <ClCompile Include="Source\Python\PyWindow.cpp" />
+    <ClCompile Include="Source\Python\PyRun.cpp" />
     <ClCompile Include="Source\Rendering\Camera\Camera.cpp" />
     <ClCompile Include="Source\Rendering\Font\Font.cpp" />
     <ClCompile Include="Source\Rendering\GUI\GUIButton.cpp" />
@@ -232,6 +235,7 @@
     <ClInclude Include="Source\B2D.h" />
     <ClInclude Include="Source\Collision\Collision.h" />
     <ClInclude Include="Source\Input\Input.h" />
+    <ClInclude Include="Source\Python\Py.h" />
     <ClInclude Include="Source\Rendering\Camera\Camera.h" />
     <ClInclude Include="Source\Rendering\Font\Font.h" />
     <ClInclude Include="Source\Rendering\GUI\GUI.h" />
