@@ -215,6 +215,9 @@
     <ClCompile Include="Source\Input\Input.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Python\Py.cpp" />
+    <ClCompile Include="Source\Python\PySound.cpp" />
+    <ClCompile Include="Source\Python\PySystem.cpp" />
+    <ClCompile Include="Source\Python\PyTime.cpp" />
     <ClCompile Include="Source\Python\PyWindow.cpp" />
     <ClCompile Include="Source\Python\PyRun.cpp" />
     <ClCompile Include="Source\Rendering\Camera\Camera.cpp" />

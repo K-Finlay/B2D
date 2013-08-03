@@ -2,6 +2,7 @@
 #define PY_H
 
 #include <Python.h>
+#include <vector>
 
 #if defined (_WIN32)
     #define __func__ __FUNCTION__
@@ -32,9 +33,31 @@ namespace b2d{
         static PyObject* B2D_SetWindowTitle (PyObject* Self, PyObject* Args);
         static PyObject* B2D_GameLoop (PyObject* Self, PyObject* Args);
 
+		// Time Functions
+		static PyObject* B2D_GetSystemTime (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_GetDeltaTime (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_ResetDeltaTime (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_GetFPS (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_deltaTime (PyObject* Self, PyObject* Args);
+
+		// System Functions
+		static PyObject* B2D_GetDisplayWidth (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_GetDisplayHeight (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_GetDisplayPixels (PyObject* Self, PyObject* Args);
+
+		// Sound Functions
+		static PyObject* B2D_CreateSound (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_PlaySound (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_PauseSound (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_StopSound (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_SetSoundVolume (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_SetSoundPan (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_SetSoundPitch (PyObject* Self, PyObject* Args);
+
 	private:
 
 		static PyMethodDef B2DFunctions[];
+		static std::vector <Sound> soundList;
 	};
 }
 
