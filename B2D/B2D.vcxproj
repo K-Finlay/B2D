@@ -214,7 +214,12 @@
     <ClCompile Include="Source\Collision\Collision.cpp" />
     <ClCompile Include="Source\Input\Input.cpp" />
     <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\Pathfinding\Pathfinding.cpp" />
     <ClCompile Include="Source\Python\Py.cpp" />
+    <ClCompile Include="Source\Python\PyRenderCamera.cpp" />
+    <ClCompile Include="Source\Python\PyRenderFont.cpp" />
+    <ClCompile Include="Source\Python\PyRenderGUIButton.cpp" />
+    <ClCompile Include="Source\Python\PyRenderParticle.cpp" />
     <ClCompile Include="Source\Python\PySound.cpp" />
     <ClCompile Include="Source\Python\PySystem.cpp" />
     <ClCompile Include="Source\Python\PyTime.cpp" />
@@ -238,6 +243,7 @@
     <ClInclude Include="Source\B2D.h" />
     <ClInclude Include="Source\Collision\Collision.h" />
     <ClInclude Include="Source\Input\Input.h" />
+    <ClInclude Include="Source\Pathfinding\Pathfinding.h" />
     <ClInclude Include="Source\Python\Py.h" />
     <ClInclude Include="Source\Rendering\Camera\Camera.h" />
     <ClInclude Include="Source\Rendering\Font\Font.h" />
