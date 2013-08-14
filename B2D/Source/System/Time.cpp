@@ -91,4 +91,18 @@ namespace b2d{
 
 		return Time::fps;
 	}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// Wait For Seconds
+	void Time::WaitForSeconds (double WaitTime){
+
+		double timer = 0;
+
+		while (timer < WaitTime){
+
+			Time::GetDeltaTime();
+			timer += Time::deltaTime;
+		}
+	}
 }
