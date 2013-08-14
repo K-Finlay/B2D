@@ -15,6 +15,7 @@ namespace b2d{
 		static void GetDeltaTime();
 		static void ResetDeltaTime();
         static double GetFPS();
+		static void WaitForSeconds (double WaitTime);
 
 		// Variables
 		static double deltaTime;
