@@ -58,6 +58,6 @@ namespace b2d{
 	PyObject* Python::B2D_deltaTime (PyObject* Self, PyObject* Args){
 
 		// Set Function
-		return Py_BuildValue ("f", (float) Time::deltaTime);
+		return Py_BuildValue ("d", Time::deltaTime);
 	}
 }

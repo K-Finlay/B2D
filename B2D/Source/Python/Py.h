@@ -54,49 +54,10 @@ namespace b2d{
 		static PyObject* B2D_SetSoundPan (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_SetSoundPitch (PyObject* Self, PyObject* Args);
 
-		// Camera Functions
-		static PyObject* B2D_MoveCamera (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_TranslateCamera (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_ZoomCamera (PyObject* Self, PyObject* Args);
-
-		// Font Functions
-		static PyObject* B2D_CreateFont (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_DrawFont (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_MoveFont (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_TranslateFont (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_SetFontColour (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_SetFontSize (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_DestroyFont (PyObject* Self, PyObject* Args);
-
-		// GUI Button Functions
-		static PyObject* B2D_CreateGUIButton (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_MoveGUIButton (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_TranslateGUIButton (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_ScaleGUIButton (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_GetGUIButtonClick (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_GetGUIButtonOver (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_DrawGUIButton (PyObject* Self, PyObject* Args);
-
-		// Particle Emitter Functions
-		static PyObject* B2D_CreateParticleEmitterPoint (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_CreateParticleEmitterLine (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_SetEmissionRate (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_SetMaxParticles (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_SetParticleHealth (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_SetParticleSize (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_SetParticleVelocity (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_ChangeParticleVelocity (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_DrawParticle (PyObject* Self, PyObject* Args);
-		static PyObject* B2D_DestroyParticle (PyObject* Self, PyObject* Args);
-
 	private:
 
 		static PyMethodDef B2DFunctions[];
 		static std::vector <Sound> soundList;
-		static std::vector <Font> fontList;
-		static std::vector <GUIButton> guiButtonList;
-		static std::vector <ParticleEmitterPoint> particlePointList;
-		static std::vector <ParticleEmitterLine> particleLineList;
 	};
 }
 
