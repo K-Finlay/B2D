@@ -87,7 +87,7 @@ namespace b2d{
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// Render The Font
-	void Font::Render(){
+	void Font::Draw(){
 
 		// Check If Rendering Is Enabled
 		if (Font::canRender){
@@ -166,8 +166,22 @@ namespace b2d{
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	// Set The Font Size
+	void Font::SetSize (int Size){
+
+		if (Font::fontType == 0){
+			Font::pixFont -> FaceSize (Size);
+		}
+
+		else{
+			Font::bitFont -> FaceSize (Size);
+		}
+	}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	// Font Deconstructor
-	Font::~Font(){
+	void Font::Destroy(){
 
 		// Check Font Type And Destroy Pointers
 		if (Font::fontType == 0){

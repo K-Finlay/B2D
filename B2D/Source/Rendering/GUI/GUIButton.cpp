@@ -175,6 +175,7 @@ namespace b2d{
 	// Swap The Current Textures
 	void GUIButton::SwapTexture (char* TexNorm, char* TexOver){
 
+		GUIButton::Destroy();
 		GLuint texID01 = 0;
 		GLuint texID02 = 0;
 		GUIButton::glTexNorm = Texture::LoadTexture (TexNorm, texID01);
@@ -185,6 +186,8 @@ namespace b2d{
 
 	// Reload The Button Data
 	void GUIButton::Reload (float X, float Y, int Width, int Height, char* TexNorm, char* TexOver, RGBA Colour){
+
+		GUIButton::Destroy();
 		GUIButton::GUIButton (X, Y, Width, Height, TexNorm, TexOver, Colour);
 	}
 

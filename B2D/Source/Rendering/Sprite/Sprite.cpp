@@ -58,6 +58,7 @@ namespace b2d{
 	// Swap The Current Texture For Another One
 	void Sprite::SwapTexture (char* TexturePath){
 
+		Sprite::Destroy();
 		GLuint texID = 0;
 		Sprite::glTex = Texture::LoadTexture (TexturePath, texID);
 	}
@@ -201,6 +202,8 @@ namespace b2d{
 
 	// Reload The Sprite Data
 	void Sprite::Reload (Vector2::Point Position, int Width, int Height, char* TexturePath, RGBA Colour){
+
+		Sprite::Destroy();
 		Sprite::Sprite (Position, Width, Height, TexturePath, Colour);
 	}
 

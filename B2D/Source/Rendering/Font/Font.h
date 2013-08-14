@@ -13,15 +13,14 @@ namespace b2d{
 
 		// Constructors
 		Font (const char* FontPath, char* Text, int Size, Vector2::Point Position, RGBA Colour = RGBA (1, 1, 1, 1), bool IsStatic = true, int FontType = 0);
-		~Font();
 
 		// Functions
-		void Render();
+		void Draw();
 		void Move (float X, float Y);
 		void Translate (float X, float Y);
-		void SetTexture (char* TexturePath);
 		void SetColour (RGBA Colour);
 		void SetSize (int Size);
+		void Destroy();
 
 		// Variables
 		Vector2::Point position;
