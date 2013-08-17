@@ -17,6 +17,11 @@ namespace b2d{
 		Square::vertexPoints[2] = Matrix::Translate (Vector2::Point (Position.x + Width / 2, Position.y + Height / 2));
 		Square::vertexPoints[3] = Matrix::Translate (Vector2::Point (Position.x - Width / 2, Position.y + Height / 2));
 
+		Square::oldVerts[0] = Square::vertexPoints[0];
+		Square::oldVerts[1] = Square::vertexPoints[1];
+		Square::oldVerts[2] = Square::vertexPoints[2];
+		Square::oldVerts[3] = Square::vertexPoints[3];
+
 		// Set Variables
 		Square::position = Position;
 		Square::width = (float) Width;
@@ -65,6 +70,19 @@ namespace b2d{
 		// Check If Rendering Is Enabled
 		if (Square::canRender){
 
+			// Check For Vert Change
+			if (Square::oldVerts[0] != Square::vertexPoints[0] || Square::oldVerts[1] != Square::vertexPoints[1], 
+				Square::oldVerts[2] != Square::vertexPoints[2] || Square::oldVerts[3] != Square::vertexPoints[3]){
+
+					// Update Verts
+					Update();
+
+					Square::oldVerts[0] = Square::vertexPoints[0];
+		            Square::oldVerts[1] = Square::vertexPoints[1];
+		            Square::oldVerts[2] = Square::vertexPoints[2];
+		            Square::oldVerts[3] = Square::vertexPoints[3];
+			}
+
 			// Bind Buffer
 			glBindBuffer (GL_ARRAY_BUFFER, vboID);
 
@@ -76,9 +94,6 @@ namespace b2d{
 		    
 		    // Set Square Colour
 		    glColor4f (Square::colour.x, Square::colour.y, Square::colour.z, Square::colour.w);
-		    
-		    // Set Vertex Pointer
-		    glVertexPointer (2, GL_INT, 8, 0);
 		    
 		    // Draw Square
 		    glDrawArrays (GL_TRIANGLE_FAN, 0, 4);

@@ -60,6 +60,7 @@ namespace b2d{
 	private:
 
 		unsigned int vboID;
+	    Vector2::Point oldVerts[4];
 	};
 }
 
