@@ -3,19 +3,19 @@
 
 namespace b2d{
 
-	std::vector <Node> PathFinder::nodeList;
     std::vector <Node> PathFinder::openList;
 	std::vector <Node> PathFinder::closedList;
 	std::vector <Sprite> PathFinder::spriteList;
 
-	std::vector <Vector2::Point> PathFinder::CalculatePath (Node &StartNode, Node &EndNode, int MapWidth, int MapHeight, int CalcSpeed){
+	std::vector <Vector2::Point> PathFinder::CalculatePath (std::vector <Node> NodeList, int StartNode, int EndNode, int MapWidth, int MapHeight, int CalcSpeed){
 
 		// Set Variables
-		std::vector <Node> tempNodeList = PathFinder::nodeList;
-		Node currentNode = StartNode;
-		currentNode.totalScore = 9999;
+		std::vector <Node> tempNodeList = NodeList;
+		Node currentNode = tempNodeList[StartNode];
+		//currentNode.totalScore = 0;
 		bool hasReachedEnd = false;
-		int lowestScore = 9999, lowestNode = 0, moves = 1;
+		float lowestScore = 9999;
+		int lowestNode = 0, moves = 1;
 
 		// Main Loop
 		do{
@@ -24,7 +24,7 @@ namespace b2d{
 			lowestScore = 999999;
 
 			// Get The Node With The Lowest Score
-			for (int i = 0; i < openList.size(); ++i){
+			for (int i = 0; i < (int) openList.size(); ++i){
 
 				if (currentNode.totalScore > openList[i].totalScore){
 					lowestNode = i;
@@ -63,7 +63,7 @@ namespace b2d{
 
 					// Calc Score
 					tempNodeList[ind - MapWidth].gScore = moves;
-					tempNodeList[ind - MapWidth].hScore = Vector2::Magnitude (tempNodeList[ind - MapWidth].x, tempNodeList[ind - MapWidth].y, EndNode.x, EndNode.y);
+					tempNodeList[ind - MapWidth].hScore = Vector2::Magnitude ((float) tempNodeList[ind - MapWidth].x, (float) tempNodeList[ind - MapWidth].y, (float) tempNodeList[EndNode].x, (float) tempNodeList[EndNode].y);
 					tempNodeList[ind - MapWidth].hScore *= CalcSpeed;
 
 					tempNodeList[ind - MapWidth].totalScore = tempNodeList[ind - MapWidth].gScore + tempNodeList[ind - MapWidth].hScore;
@@ -82,7 +82,7 @@ namespace b2d{
 
 					// Calc Score
 					tempNodeList[ind + MapWidth].gScore = moves;
-					tempNodeList[ind + MapWidth].hScore = Vector2::Magnitude (tempNodeList[ind + MapWidth].x, tempNodeList[ind + MapWidth].y, EndNode.x, EndNode.y);
+					tempNodeList[ind + MapWidth].hScore = Vector2::Magnitude ((float) tempNodeList[ind + MapWidth].x, (float) tempNodeList[ind + MapWidth].y, (float) tempNodeList[EndNode].x, (float) tempNodeList[EndNode].y);
 					tempNodeList[ind + MapWidth].hScore *= CalcSpeed;
 
 					tempNodeList[ind + MapWidth].totalScore = tempNodeList[ind + MapWidth].gScore + tempNodeList[ind + MapWidth].hScore;
@@ -101,7 +101,7 @@ namespace b2d{
 
 					// Calc Score
 					tempNodeList[ind - 1].gScore = moves;
-					tempNodeList[ind - 1].hScore = Vector2::Magnitude (tempNodeList[ind - 1].x, tempNodeList[ind - 1].y, EndNode.x, EndNode.y);
+					tempNodeList[ind - 1].hScore = Vector2::Magnitude ((float) tempNodeList[ind - 1].x, (float) tempNodeList[ind - 1].y, (float) tempNodeList[EndNode].x, (float) tempNodeList[EndNode].y);
 					tempNodeList[ind - 1].hScore *= CalcSpeed;
 
 					tempNodeList[ind - 1].totalScore = tempNodeList[ind - 1].gScore + tempNodeList[ind - 1].hScore;
@@ -120,7 +120,7 @@ namespace b2d{
 
 					// Calc Score
 					tempNodeList[ind + 1].gScore = moves;
-					tempNodeList[ind + 1].hScore = Vector2::Magnitude (tempNodeList[ind + 1].x, tempNodeList[ind + 1].y, EndNode.x, EndNode.y);
+					tempNodeList[ind + 1].hScore = Vector2::Magnitude ((float) tempNodeList[ind + 1].x, (float) tempNodeList[ind + 1].y, (float) tempNodeList[EndNode].x, (float) tempNodeList[EndNode].y);
 					tempNodeList[ind + 1].hScore *= CalcSpeed;
 
 					tempNodeList[ind + 1].totalScore = tempNodeList[ind + 1].gScore + tempNodeList[ind + 1].hScore;
@@ -136,7 +136,7 @@ namespace b2d{
 			moves += 1;
 
 			// Check If The Current Node Is The End Node
-			if (currentNode.x == EndNode.x && currentNode.y == EndNode.y){
+			if (currentNode.x == tempNodeList[EndNode].x && currentNode.y == tempNodeList[EndNode].y){
 
 				// Create The Return Vector
 				std::vector <Vector2::Point> returnVector;
@@ -151,7 +151,7 @@ namespace b2d{
 		        }*/
 					
 					// Check If The Current Node Has Returned To The Start 
-					if (currentNode.x == StartNode.x && currentNode.y == StartNode.y){
+					if (currentNode.x == tempNodeList[StartNode].x && currentNode.y == tempNodeList[StartNode].y){
 
 						openList.clear();
 						closedList.clear();
@@ -162,12 +162,12 @@ namespace b2d{
 
 						// Add Current Node To Return Vector, And Set Current Node As It's Parent
 						spriteList[tempNodeList[currentNode.listPos].listPos].SwapTexture ("./Node5.png");
-						returnVector.push_back (Vector2::Point (currentNode.x, currentNode.y));
+						returnVector.push_back (Vector2::Point ((float) currentNode.x, (float) currentNode.y));
 						currentNode = tempNodeList[currentNode.parent];
 					}
 				}
 
-				// Reutrn The Final Path
+				// Reuturn The Final Path
 				std::cout << "Found End" << '\n';
 				return returnVector;
 			}
@@ -175,6 +175,8 @@ namespace b2d{
 
 		while (openList.size() > 0 && !hasReachedEnd);
 
+		// If No Path Is Found, Return Empty Vector
 		std::cout << "No Path Found" << '\n';
+		return std::vector <Vector2::Point>();
 	}
 }
