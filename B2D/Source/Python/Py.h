@@ -89,6 +89,27 @@ namespace b2d{
 		static PyObject* B2D_DrawParticle (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_DestroyParticle (PyObject* Self, PyObject* Args);
 
+		// Primitive Functions
+		static PyObject* B2D_CreateSquare (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_DrawSquare (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_MoveSquare (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_TranslateSquare (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_ScaleSquare (PyObject* Self, PyObject* Args);
+
+		// Sprite Functions
+		static PyObject* B2D_CreateSprite (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_DrawSprite (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_SwapSpriteTexture (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_PlaySpriteAnimation (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_SetSpriteFrame (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_StopSpriteAnimation (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_ResumeSpriteAnimation (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_ReloadSprite (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_MoveSprite (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_TranslateSprite (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_ScaleSprite (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_DestroySprite (PyObject* Self, PyObject* Args);
+
 	private:
 
 		static PyMethodDef B2DFunctions[];
@@ -97,6 +118,8 @@ namespace b2d{
 		static std::vector <GUIButton> guiButtonList;
 		static std::vector <ParticleEmitterPoint> particlePointList;
 		static std::vector <ParticleEmitterLine> particleLineList;
+		static std::vector <Square> primitiveSquareList;
+		static std::vector <Sprite> spriteList;
 	};
 }
 
