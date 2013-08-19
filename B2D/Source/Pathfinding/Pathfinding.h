@@ -12,18 +12,23 @@ namespace b2d{
 		int gScore;
 		int x, y;
 		int parent;
-		bool isWalkable, isChecked;
 		int listPos;
+		bool isWalkable, isChecked;
 	};
 
 	class PathFinder{
 	public:
 
-		static std::vector <Node> openList;
-		static std::vector <Node> closedList;
+		// Variables
+		std::vector <Node> openList;
+		std::vector <Node> closedList;
 		static std::vector <Sprite> spriteList;
+		std::vector <Vector2::Point> path;
+		int nodeSize;
 
-		static std::vector <Vector2::Point> CalculatePath (std::vector <Node> NodeList, int StartNode, int EndNode, int MapWidth, int MapHeight, int CalcSpeed);
+		// Functions
+		void CalculatePath (std::vector <Node> NodeList, int NodeSize, int StartNode, int EndNode, int MapWidth, int MapHeight, int CalcSpeed = 5, int StripNodes = 0);
+		void FollowPath (Vector2::Point &Vector, float speed);
 	};
 }
 

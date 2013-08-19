@@ -3,25 +3,23 @@
 
 namespace b2d{
 
-    std::vector <Node> PathFinder::openList;
-	std::vector <Node> PathFinder::closedList;
 	std::vector <Sprite> PathFinder::spriteList;
 
-	std::vector <Vector2::Point> PathFinder::CalculatePath (std::vector <Node> NodeList, int StartNode, int EndNode, int MapWidth, int MapHeight, int CalcSpeed){
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// Calculate The Path
+	void PathFinder::CalculatePath (std::vector <Node> NodeList, int NodeSize, int StartNode, int EndNode, int MapWidth, int MapHeight, int CalcSpeed, int StripNodes){
 
 		// Set Variables
 		std::vector <Node> tempNodeList = NodeList;
 		Node currentNode = tempNodeList[StartNode];
-		//currentNode.totalScore = 0;
+		PathFinder::nodeSize = NodeSize;
 		bool hasReachedEnd = false;
-		float lowestScore = 9999;
+		float lowestScore = 0;
 		int lowestNode = 0, moves = 1;
 
 		// Main Loop
 		do{
-
-			// Set Lowest Score To High Value
-			lowestScore = 999999;
 
 			// Get The Node With The Lowest Score
 			for (int i = 0; i < (int) openList.size(); ++i){
@@ -40,14 +38,7 @@ namespace b2d{
 			// Erase Lowest Node
 			if (openList.size() != 0){
 
-				/*Window::Clear();
-				for (int i = 0; i < PathFinder::spriteList.size(); ++i){
-					for (int j = 0; j < 100; ++j)
-			            PathFinder::spriteList[i].Draw();
-		        }*/
-
 				// Remove Node From Open List, Move To Closed List, Set As Current Node
-				//spriteList[openList[lowestNode].listPos].SwapTexture ("./Node3.png");
 				closedList.push_back (openList[lowestNode]);
 				currentNode = closedList[closedList.size() - 1];
 			    openList.erase (openList.begin() + lowestNode);
@@ -143,12 +134,6 @@ namespace b2d{
 
 				// Loop Back Through Path
 				while (hasReachedEnd == false){
-
-				/*Window::Clear();
-				for (int i = 0; i < PathFinder::spriteList.size(); ++i){
-					for (int j = 0; j < 100; ++j)
-			            PathFinder::spriteList[i].Draw();
-		        }*/
 					
 					// Check If The Current Node Has Returned To The Start 
 					if (currentNode.x == tempNodeList[StartNode].x && currentNode.y == tempNodeList[StartNode].y){
@@ -160,23 +145,69 @@ namespace b2d{
 
 					else{
 
+						// Remove Unneeded Nodes
+						for (int i = 0; i < StripNodes; ++i){
+
+							if (currentNode.x == tempNodeList[currentNode.parent].x && tempNodeList[currentNode.parent].x == tempNodeList[tempNodeList[currentNode.parent].parent].x){
+						    	currentNode.parent = tempNodeList[currentNode.parent].parent;
+						    }
+
+							else if (currentNode.y == tempNodeList[currentNode.parent].y && tempNodeList[currentNode.parent].y == tempNodeList[tempNodeList[currentNode.parent].parent].y){
+								currentNode.parent = tempNodeList[currentNode.parent].parent;
+							}
+						}
+
 						// Add Current Node To Return Vector, And Set Current Node As It's Parent
 						spriteList[tempNodeList[currentNode.listPos].listPos].SwapTexture ("./Node5.png");
-						returnVector.push_back (Vector2::Point ((float) currentNode.x, (float) currentNode.y));
+						returnVector.push_back (Vector2::Point ((float) currentNode.x * NodeSize, (float) currentNode.y * NodeSize));
 						currentNode = tempNodeList[currentNode.parent];
 					}
 				}
 
 				// Reuturn The Final Path
-				std::cout << "Found End" << '\n';
-				return returnVector;
+				PathFinder::path = returnVector;
+				return;
 			}
 		}
 
-		while (openList.size() > 0 && !hasReachedEnd);
+		while (openList.size() > 0);
+	}
 
-		// If No Path Is Found, Return Empty Vector
-		std::cout << "No Path Found" << '\n';
-		return std::vector <Vector2::Point>();
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// Follow Path
+	void PathFinder::FollowPath (Vector2::Point &Vector, float speed){
+
+		// Check If There Are Nodes Remaining In Path
+		if (PathFinder::path.size() != 0){
+
+			// Check X Position
+		    if (Vector.x > (PathFinder::path[PathFinder::path.size() - 1].x)){
+		    	Vector.x -= speed;
+		    }
+		    
+		    else if (Vector.x < (PathFinder::path[PathFinder::path.size() - 1].x)){
+		    	Vector.x += speed;
+		    }
+		    
+			// Check Y Position
+		    else if (Vector.y > (PathFinder::path[PathFinder::path.size() - 1].y)){
+		    	Vector.y -= speed;
+		    }
+		    
+		    else if (Vector.y < (PathFinder::path[PathFinder::path.size() - 1].y)){
+		    	Vector.y += speed;
+		    }
+		    
+			// Check If Node Has Been Reached
+			else{
+		    	PathFinder::path.pop_back();
+		    }
+		}
+
+		// If There Are No Nodes, Return
+		else{
+			return;
+		}
 	}
 }
