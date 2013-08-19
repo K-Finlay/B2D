@@ -86,6 +86,7 @@ namespace b2d{
 		static PyObject* B2D_SetParticleSize (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_SetParticleVelocity (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_ChangeParticleVelocity (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_MoveParticle (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_DrawParticle (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_DestroyParticle (PyObject* Self, PyObject* Args);
 
@@ -109,6 +110,14 @@ namespace b2d{
 		static PyObject* B2D_TranslateSprite (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_ScaleSprite (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_DestroySprite (PyObject* Self, PyObject* Args);
+
+		// Input Functions
+		static PyObject* B2D_GetMousePos (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_GetMouseButton (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_GetKey (PyObject* Self, PyObject* Args);
+
+		// Collision Functions
+		static PyObject* B2D_GetCollision (PyObject* Self, PyObject* Args);
 
 	private:
 

@@ -220,6 +220,27 @@ namespace b2d{
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	// Move The Particle
+	PyObject* Python::B2D_MoveParticle (PyObject* Self, PyObject* Args){
+
+		// Create Variables
+	    int particleType, particleReference; float x, y;
+
+		// Look For Errors
+    	if (!PyArg_ParseTuple (Args, "iiff", &particleType, &particleReference, &x, &y)){
+    		ParsePyTupleError (__func__, __LINE__);
+    	}
+
+		// Set Function
+		if (particleType == 0){
+			Python::particlePointList[particleReference].position = Vector2::Point (x, y);
+		}
+
+		Py_RETURN_NONE;
+	}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	// Draw The Particles
 	PyObject* Python::B2D_DrawParticle (PyObject* Self, PyObject* Args){
 

@@ -216,6 +216,8 @@
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Pathfinding\Pathfinding.cpp" />
     <ClCompile Include="Source\Python\Py.cpp" />
+    <ClCompile Include="Source\Python\PyCollision.cpp" />
+    <ClCompile Include="Source\Python\PyInput.cpp" />
     <ClCompile Include="Source\Python\PyRenderCamera.cpp" />
     <ClCompile Include="Source\Python\PyRenderFont.cpp" />
     <ClCompile Include="Source\Python\PyRenderGUIButton.cpp" />

@@ -67,6 +67,7 @@ PyMethodDef b2d::Python::B2DFunctions[] = {
 	{"SetParticleSize"           , B2D_SetParticleSize           , METH_VARARGS, "Set Particle Size"                  },
 	{"SetParticleVelocity"       , B2D_SetParticleVelocity       , METH_VARARGS, "Set Particle Velocity"              },
 	{"ChangeParticleVelocity"    , B2D_ChangeParticleVelocity    , METH_VARARGS, "Change Particle Velocity"           },
+	{"MoveParticle"              , B2D_MoveParticle              , METH_VARARGS, "Move The Particle"                  },
 	{"DrawParticle"              , B2D_DrawParticle              , METH_VARARGS, "Draw The Particle"                  },
 	{"DestroyParticle"           , B2D_DestroyParticle           , METH_VARARGS, "Destroy The Particle"               },
 
@@ -90,6 +91,14 @@ PyMethodDef b2d::Python::B2DFunctions[] = {
 	{"TranslateSprite"           , B2D_TranslateSprite           , METH_VARARGS, "Translate Sprite"                   },
 	{"ScaleSprite"               , B2D_ScaleSprite               , METH_VARARGS, "Scale Sprite"                       },
 	{"DestroySprite"             , B2D_DestroySprite             , METH_VARARGS, "Destroy The Sprite"                 },
+
+	// Input Functions
+	{"GetMousePos"               , B2D_GetMousePos               , METH_VARARGS, "Get The Mouse Position"             },
+	{"GetMouseButton"            , B2D_GetMouseButton            , METH_VARARGS, "Get Mouse Button Pressed"           },
+	{"GetKey"                    , B2D_GetKey                    , METH_VARARGS, "Get Key Pressed"                    },
+
+	// Collision Functions
+	{"GetCollision"              , B2D_GetCollision              , METH_VARARGS, "Get Collision"                      },
 	{NULL, NULL, 0, NULL} 
 };
 
