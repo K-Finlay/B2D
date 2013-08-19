@@ -1,6 +1,7 @@
 #include <VML/VML.h>
 #include "Collision/Collision.h"
 #include "Input/Input.h"
+#include "Pathfinding/Pathfinding.h"
 #include "Rendering/Camera/Camera.h"
 #include "Rendering/Font/Font.h"
 #include "Rendering/GUI/GUI.h"
