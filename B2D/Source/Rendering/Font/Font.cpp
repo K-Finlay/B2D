@@ -2,7 +2,7 @@
 #include "../Camera/Camera.h"
 #include "../../System/System.h"
 #include "../../ResourceLoading/Texture/Texture.h"
-#include <Windows.h>
+#include <iostream>
 #include <GL/glew.h>
 
 ///////////////////////////////////////////
@@ -24,7 +24,7 @@ namespace b2d{
 			// Check For Errors
 			if (Font::pixFont -> Error()){
 
-				MessageBox (NULL, TEXT ("The font could not be loaded."), TEXT ("FREETYPE ERROR"), MB_ICONERROR);
+				std::cout << stderr << " The font \"" << FontPath << "\" could not be loaded" << '\n';
 				return;
 			}
 
@@ -41,7 +41,7 @@ namespace b2d{
 			// Check For Errors
 			if (Font::bitFont -> Error()){
 
-				MessageBox (NULL, TEXT ("The font could not be loaded."), TEXT ("FREETYPE ERROR"), MB_ICONERROR);
+				std::cout << stderr << " The font \"" << FontPath << "\" could not be loaded" << '\n';
 				return;
 			}
 
@@ -52,7 +52,7 @@ namespace b2d{
 		// Else Display Error
 		else{
 
-			MessageBox (NULL, TEXT ("Invalid font type selected. Default font type will be used."), TEXT ("FREETYPE ERROR"), MB_ICONERROR);
+			std::cout << stderr <<  "An invalid font type was selected. The default font type will be used" << '\n';
 
 			// Set Font Path
 			Font::pixFont = new FTGLPixmapFont (FontPath);
@@ -60,7 +60,7 @@ namespace b2d{
 			// Check For Errors
 			if (Font::pixFont -> Error()){
 
-				MessageBox (NULL, TEXT ("The font could not be loaded."), TEXT ("FREETYPE ERROR"), MB_ICONERROR);
+				std::cout << stderr << " The font \"" << FontPath << "\" could not be loaded" << '\n';
 				return;
 			}
 

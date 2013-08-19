@@ -1,5 +1,5 @@
 #include "Texture.h"
-#include <Windows.h>
+#include <iostream>
 #include <GL/glew.h>
 #include <FreeImage/FreeImage.h>
 
@@ -30,7 +30,7 @@ namespace b2d{
 		// If Still Failed, Return Failure
 		else if (freeImageFormat == FIF_UNKNOWN){
 
-			MessageBox (NULL, TEXT ("Texture could not be loaded. Unknown file type, or missing texture"), TEXT ("FREEIMAGE ERROR"), MB_ICONERROR);
+			std::cout << stderr << " The Texture \"" << TextureFileName << "\" could not be loaded" << '\n' << "Unknown file type" << '\n';
 			return -1;
 		}
 
@@ -42,7 +42,7 @@ namespace b2d{
 		// If Not, Return Failure
 		else{
 
-			MessageBox (NULL, TEXT ("Texture could not be loaded. Unsupported File Type."), TEXT ("FREEIMAGE ERROR"), MB_ICONERROR);
+			std::cout << stderr << " The Texture \"" << TextureFileName << "\" could not be loaded" << '\n' << "File not found" << '\n';
 			return -1;
 		}
 
@@ -75,7 +75,7 @@ namespace b2d{
 		// If Above Fails, Return Unknown Error
 		else{
 
-			MessageBox (NULL, TEXT ("Texture could not be loaded. Unknown Error"), TEXT ("FREEIMAGE ERROR"), MB_ICONERROR);
+			std::cout << stderr << " The texture \"" << TextureFileName << "\" could not be loaded" << '\n' << "Unknown error" << '\n';
 			return -1;
 		}
 	}
@@ -88,7 +88,7 @@ namespace b2d{
 		// If Data Is Empty, Return Failure
 		if (textureData == NULL || texWidth == 0 || texHeight == 0){
 
-			MessageBox (NULL, TEXT ("Texture could not be loaded. Could not load data."), TEXT ("FREEIMAGE ERROR"), MB_ICONERROR);
+			std::cout << stderr << " Texture could not be loaded. Could not load data" << '\n';
 			return;
 		}
 

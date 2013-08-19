@@ -1,5 +1,5 @@
 #include "Collision.h"
-#include <Windows.h>
+#include <iostream>
 
 ///////////////////////////////////////////
 //        This File Handles basic        //
@@ -26,7 +26,7 @@ namespace b2d{
 		// Check If An Invalid Collision Type Has Been Selected
 		else{
 
-			MessageBox (NULL, TEXT ("Invalid collision type selected."), TEXT ("COLLISION ERROR"), MB_ICONERROR);
+			std::cout << stderr << "Invalid collision type selected." << '\n';
 			return false;
 		}
 

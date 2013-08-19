@@ -1,6 +1,7 @@
 #include <GL/glfw.h>
 #include "Input.h"
 #include "../Window/Window.h"
+#include "../Rendering/Camera/Camera.h"
 
 ///////////////////////////////////////////
 //     This File Handles User Input      //

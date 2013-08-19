@@ -1,5 +1,5 @@
 #include "Sound.h"
-#include <Windows.h>
+#include <iostream>
 
 using namespace audiere;
 
@@ -18,7 +18,7 @@ namespace b2d{
 
 		if (!Sound::system){
 
-			MessageBox (NULL, TEXT ("Sound engine could not be initialized."), TEXT ("AUDIERE ERROR"), MB_ICONERROR);
+			std::cout << stderr << " The sound engine could not be initialized" << '\n';
 			return;
 		}
 
@@ -27,7 +27,7 @@ namespace b2d{
 
 		if (!Sound::sound){
 
-			MessageBox (NULL, TEXT ("Sound could not be loaded"), TEXT ("AUDIERE ERROR"), MB_ICONERROR);
+			std::cout << stderr << " The sound \"" << FileName << "\" could not be loaded" << '\n';
 			return;
 		}
 

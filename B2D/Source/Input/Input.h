@@ -2,7 +2,6 @@
 #define INPUT_H
 
 #include <VML/Vector2/Vector2.h>
-#include "../Rendering/Camera/Camera.h"
 
 namespace b2d{
 

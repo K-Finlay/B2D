@@ -1,7 +1,5 @@
 #include "Shaders.h"
-#include <Windows.h>
 #include <GL/glew.h>
-#include <GL/GL.h>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -16,11 +14,8 @@ namespace b2d{
 	// Loads A Shader
 	unsigned int Shader::LoadShader (char* ShaderFile, GLenum Type){
 
-		// Init GLEW
-		glewInit();
-
 		// Setup File Loading Variables
-		std::ifstream in(ShaderFile);
+		std::ifstream in (ShaderFile);
 		std::string src = "";
 		std::string line = "";
 
@@ -43,7 +38,7 @@ namespace b2d{
 		// Check If Compilation Was Successful
 		if (!shader){
 
-			MessageBox (NULL, TEXT ("Shader could not be compiled."), TEXT ("SHADER ERROR"), MB_ICONERROR);
+			std::cout << stderr << " The shader \"" << ShaderFile << "\" could not be compiled" << '\n';
 			return 0;
 		}
 
@@ -81,7 +76,7 @@ namespace b2d{
 		// Check For Errors
 		if (!linked){
 
-			MessageBox (NULL, TEXT ("Shader could not be linked"), TEXT ("SHADER ERROR"), MB_ICONERROR);
+			std::cout << stderr << " The shader could not be linked" << '\n';
 			return 0;
 		}
 

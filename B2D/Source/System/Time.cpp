@@ -1,6 +1,6 @@
 #include "System.h"
 #include <time.h>
-#include <Windows.h>
+#include <iostream>
 
 ///////////////////////////////////////////
 //     This File Handles Everything      //
@@ -42,7 +42,7 @@ namespace b2d{
 		// Get Error
 		else{
 
-			MessageBox (NULL, TEXT ("Invalid time type selected"), TEXT ("TIME ERROR"), MB_ICONERROR);
+			std::cout << stderr << " Invalid time type selected" << '\n';
 			return 0;
 		}
 	}

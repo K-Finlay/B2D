@@ -27,7 +27,7 @@ namespace b2d{
 		// Check If GLFW Is Working
 		if (!glfwInit()){
 
-			MessageBox (NULL, TEXT ("GLFW could not be initialized."), TEXT ("GLFW ERROR"), MB_ICONERROR);
+			std::cout << stderr << " GLFW could not be initialized" << '\n';
 			return;
 		}
 
@@ -43,14 +43,14 @@ namespace b2d{
 		// Check If Window Was Created
 		if (!glfwOpenWindow (ScreenWidth, ScreenHeight, 8, 8, 8, 0, 24, 0, windowMode)){
 
-			MessageBox (NULL, TEXT ("GLFW window could not be created"), TEXT ("GLFW ERROR"), MB_ICONERROR);
+			std::cout << stderr << " GLFW window could not be created" << '\n';
 			return;
 		}
 
 		// Check If GLEW Is Working
 		if (glewInit() != GLEW_OK){
 
-			MessageBox (NULL, TEXT ("GLEW could not be initialized."), TEXT ("GLEW ERROR"), MB_ICONERROR);
+			std::cout << stderr << " GLEW could not be initialized" << '\n';
 			return;
 		}
 

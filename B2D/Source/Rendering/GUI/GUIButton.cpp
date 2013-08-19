@@ -138,14 +138,14 @@ namespace b2d{
 		if (Collision::GetCollision (GUIButton::position, Input::GetMousePosition(), Vector2::Point (GUIButton::width, GUIButton::height), Vector2::Point (1, 1), 1) && GUIButton::canRender){
 
 			// If Button Is Not Already Clicked, Return True
-			if (Input::GetMouseButton (b2d::Mouse::MOUSE_LEFT) && isClicked == false){
+			if (Input::GetMouseButton (MOUSE_LEFT) && isClicked == false){
 
 				isClicked = true;
 				return true;
 			}
 
 			// If Button Is Already Clicked, Return False
-			else if (Input::GetMouseButton (b2d::Mouse::MOUSE_LEFT) && isClicked == true){
+			else if (Input::GetMouseButton (MOUSE_LEFT) && isClicked == true){
 				return false;
 			}
 		}
