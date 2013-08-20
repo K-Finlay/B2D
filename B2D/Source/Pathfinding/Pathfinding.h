@@ -27,7 +27,8 @@ namespace b2d{
 		int nodeSize;
 
 		// Functions
-		void CalculatePath (std::vector <Node> NodeList, int NodeSize, int StartNode, int EndNode, int MapWidth, int MapHeight, int CalcSpeed = 5, int StripNodes = 0);
+		void CalculateAStar (std::vector <Node> NodeList, int NodeSize, int StartNode, int EndNode, int MapWidth, int MapHeight, int StripNodes = 0);
+		void CalculateDijkstra (std::vector <Node> NodeList, int NodeSize, int StartNode, std::vector <int> EndNode, int MapWidth, int MapHeight, int StripNodes = 0);
 		void FollowPath (Vector2::Point &Vector, float speed);
 	};
 }
