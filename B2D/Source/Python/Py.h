@@ -111,6 +111,13 @@ namespace b2d{
 		static PyObject* B2D_ScaleSprite (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_DestroySprite (PyObject* Self, PyObject* Args);
 
+		// Path Finding Functions
+		static PyObject* B2D_CreatePathFinder (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_PathFinderAddNode (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_CalculateAStar (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_CalculateDijkstra (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_FollowPath (PyObject* Self, PyObject* Args);
+
 		// Input Functions
 		static PyObject* B2D_GetMousePos (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_GetMouseButton (PyObject* Self, PyObject* Args);
@@ -129,6 +136,8 @@ namespace b2d{
 		static std::vector <ParticleEmitterLine> particleLineList;
 		static std::vector <Square> primitiveSquareList;
 		static std::vector <Sprite> spriteList;
+		static std::vector <PathFinder> pathList;
+		static std::vector <Node> nodeList;
 	};
 }
 

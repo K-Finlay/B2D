@@ -92,6 +92,13 @@ PyMethodDef b2d::Python::B2DFunctions[] = {
 	{"ScaleSprite"               , B2D_ScaleSprite               , METH_VARARGS, "Scale Sprite"                       },
 	{"DestroySprite"             , B2D_DestroySprite             , METH_VARARGS, "Destroy The Sprite"                 },
 
+	// Path Finding Functions
+	{"CreatePathFinder"          , B2D_CreatePathFinder          , METH_VARARGS, "Create A Path Finder"               },
+	{"PathFinderAddNode"         , B2D_PathFinderAddNode         , METH_VARARGS, "Add Node To Path Finder"            },
+	{"CalculateAStar"            , B2D_CalculateAStar            , METH_VARARGS, "Create AStar Path"                  },
+	{"CalculateDijkstra"         , B2D_CalculateDijkstra         , METH_VARARGS, "Create Dijkstra's Path"             },
+	{"FollowPath"                , B2D_FollowPath                , METH_VARARGS, "Follow The Selected Path"           },
+
 	// Input Functions
 	{"GetMousePos"               , B2D_GetMousePos               , METH_VARARGS, "Get The Mouse Position"             },
 	{"GetMouseButton"            , B2D_GetMouseButton            , METH_VARARGS, "Get Mouse Button Pressed"           },
