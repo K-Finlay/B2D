@@ -1,9 +1,9 @@
 #include "System.h"
-#include <Windows.h>
+#include <GL/glfw.h>
 
 ///////////////////////////////////////////
 //       This File Handles All Of        //
-//      The Misc. System Functions       // 
+//      The Misc. System Functions       //
 ///////////////////////////////////////////
 
 namespace b2d{
@@ -12,13 +12,13 @@ namespace b2d{
 	int System::GetDisplayWidth(){
 
 		// Set Variables
-		RECT screenRect;
+		GLFWvidmode return_struct;
 
 		// Get Screen Size
-		GetWindowRect (GetDesktopWindow(), &screenRect);
+		glfwGetDesktopMode (&return_struct);
 
 		// Return Window Width
-		return (int) screenRect.right;
+		return (int) return_struct.Width;
 	}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -27,13 +27,13 @@ namespace b2d{
 	int System::GetDisplayHeight(){
 
 		// Set Variables
-		RECT screenRect;
+		GLFWvidmode return_struct;
 
 		// Get Screen Size
-		GetWindowRect (GetDesktopWindow(), &screenRect);
+		glfwGetDesktopMode (&return_struct);
 
 		// Return Window Height
-		return (int) screenRect.bottom;
+		return (int) return_struct.Height;
 	}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,12 +42,12 @@ namespace b2d{
 	int System::GetDisplayPixels(){
 
 		// Set Variables
-		RECT screenRect;
+		GLFWvidmode return_struct;
 
 		// Get Screen Size
-		GetWindowRect (GetDesktopWindow(), &screenRect);
+		glfwGetDesktopMode (&return_struct);
 
 		// Return Window Pixels
-		return ((int) screenRect.right) * ((int) screenRect.bottom);
+		return ((int) return_struct.Width) * ((int) return_struct.Height);
 	}
 }

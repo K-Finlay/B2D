@@ -25,13 +25,10 @@ namespace b2d{
 		RGBA rgba = RGBA (colour);
 
 		// Create New Font
-		Font* font = new Font (fontPath, text, size, Vector2::Point (x, y), rgba, isStatic, fontType);
+		Font font (fontPath, text, size, Vector2::Point (x, y), rgba, isStatic, fontType);
 
 		// Add Font To List
-		Python::fontList.push_back (*font);
-
-		// Delete Old Font
-		delete font;
+		Python::fontList.push_back (font);
 
 		// Set Function
 		return Py_BuildValue ("i", Python::fontList.size() - 1);

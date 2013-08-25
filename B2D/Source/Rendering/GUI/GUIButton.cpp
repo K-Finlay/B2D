@@ -3,6 +3,10 @@
 #include "../../Input/Input.h"
 #include <GL/glew.h>
 
+//#ifdef __linux__
+    #include <GL/gl.h>
+//#endif
+
 ///////////////////////////////////////////
 //     This File Handles The Creation    //
 //       And Rendering Of A Button       //
@@ -188,7 +192,7 @@ namespace b2d{
 	void GUIButton::Reload (float X, float Y, int Width, int Height, char* TexNorm, char* TexOver, RGBA Colour){
 
 		GUIButton::Destroy();
-		GUIButton::GUIButton (X, Y, Width, Height, TexNorm, TexOver, Colour);
+        //GUIButton::GUIButton (X, Y, Width, Height, TexNorm, TexOver, Colour);
 	}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -4,9 +4,7 @@
 #include <Python.h>
 #include <vector>
 
-#if defined (_WIN32)
-    #define __func__ __FUNCTION__
-#endif
+#define __func__ __FUNCTION__
 
 // Functions Required To Load The Python Modules
 void ParsePyTupleError (const char* Function, int Line);
@@ -39,6 +37,7 @@ namespace b2d{
 		static PyObject* B2D_ResetDeltaTime (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_GetFPS (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_deltaTime (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_WaitForSeconds (PyObject* Self, PyObject* Args);
 
 		// System Functions
 		static PyObject* B2D_GetDisplayWidth (PyObject* Self, PyObject* Args);
@@ -109,6 +108,7 @@ namespace b2d{
 		static PyObject* B2D_MoveSprite (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_TranslateSprite (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_ScaleSprite (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_GetSpritePosition (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_DestroySprite (PyObject* Self, PyObject* Args);
 
 		// Path Finding Functions
@@ -129,7 +129,7 @@ namespace b2d{
 	private:
 
 		static PyMethodDef B2DFunctions[];
-		static std::vector <Sound> soundList;
+        static std::vector <Sound> soundList;
 		static std::vector <Font> fontList;
 		static std::vector <GUIButton> guiButtonList;
 		static std::vector <ParticleEmitterPoint> particlePointList;

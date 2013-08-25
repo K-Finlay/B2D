@@ -204,7 +204,7 @@ namespace b2d{
 	void Sprite::Reload (Vector2::Point Position, int Width, int Height, char* TexturePath, RGBA Colour){
 
 		Sprite::Destroy();
-		Sprite::Sprite (Position, Width, Height, TexturePath, Colour);
+        //Sprite::Sprite (Position, Width, Height, TexturePath, Colour);
 	}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////

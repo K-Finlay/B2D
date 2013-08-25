@@ -26,7 +26,7 @@ namespace b2d{
 		// Check If An Invalid Collision Type Has Been Selected
 		else{
 
-			std::cout << stderr << "Invalid collision type selected." << '\n';
+            std::cout << "Invalid collision type selected." << '\n';
 			return false;
 		}
 

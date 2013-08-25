@@ -60,4 +60,22 @@ namespace b2d{
 		// Set Function
 		return Py_BuildValue ("f", (float) Time::deltaTime);
 	}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// Wait For Seconds
+	PyObject* Python::B2D_WaitForSeconds (PyObject* Self, PyObject* Args){
+
+		// Create Variables
+		double time;
+
+		// Look For Errors
+    	if (!PyArg_ParseTuple (Args, "d", &time)){
+    		ParsePyTupleError (__func__, __LINE__);
+    	}
+
+		// Set Function
+		Time::WaitForSeconds (time);
+		Py_RETURN_NONE;
+	}
 }

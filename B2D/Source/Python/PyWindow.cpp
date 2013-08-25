@@ -37,7 +37,7 @@ namespace b2d{
     		ParsePyTupleError (__func__, __LINE__);
     	}
     
-    	RGBA colour = RGBA (colourChar);
+        RGBA colour = RGBA (colourChar);
     
     	// Set Function
     	Window::Clear (colour);

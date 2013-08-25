@@ -13,20 +13,21 @@ PyMethodDef b2d::Python::B2DFunctions[] = {
 	{"SetWindowSize"             , B2D_SetWindowSize             , METH_VARARGS, "Set The Window Size."               },
 	{"SetWindowTitle"            , B2D_SetWindowTitle            , METH_VARARGS, "Set The Window Title."              },
 	{"GameLoop"                  , B2D_GameLoop                  , METH_VARARGS, "The Game Loop."                     },
-					             					             										             
-	// Time Functions            					             										             
+
+	// Time Functions
 	{"GetSystemTime"             , B2D_GetSystemTime             , METH_VARARGS, "Get The System Time"                },
 	{"GetDeltaTime"              , B2D_GetDeltaTime              , METH_VARARGS, "Get The Delta Time"                 },
 	{"ResetDeltaTime"            , B2D_ResetDeltaTime            , METH_VARARGS, "Reset The Delta Time"               },
 	{"GetFPS"                    , B2D_GetFPS                    , METH_VARARGS, "Get The FPS"                        },
 	{"deltaTime"                 , B2D_deltaTime                 , METH_VARARGS, "Return The Delta Time"              },
-					             					             										             
-	// System Functions          					             										             
-	{"GetDisplayWidth"           , B2D_GetDisplayWidth           , METH_VARARGS, "Get The Display Width"              },
-	{"GetDisplayHeight"          , B2D_GetDisplayHeight          , METH_VARARGS, "Get The Display Height"             },
-	{"GetDisplayPixels"          , B2D_GetDisplayPixels          , METH_VARARGS, "Get The Display Pixels"             },
-														         										             
-	// Sound Functions									         										             
+	{"WaitForSeconds"            , B2D_WaitForSeconds            , METH_VARARGS, "Wait For Seconds"                   },
+
+	// System Functions
+	//{"GetDisplayWidth"           , B2D_GetDisplayWidth           , METH_VARARGS, "Get The Display Width"              },
+	//{"GetDisplayHeight"          , B2D_GetDisplayHeight          , METH_VARARGS, "Get The Display Height"             },
+	//{"GetDisplayPixels"          , B2D_GetDisplayPixels          , METH_VARARGS, "Get The Display Pixels"             },
+
+	// Sound Functions
 	{"CreateSound"               , B2D_CreateSound               , METH_VARARGS, "Create A New Sound"                 },
 	{"PlaySound"                 , B2D_PlaySound                 , METH_VARARGS, "Play A Sound"                       },
 	{"PauseSound"                , B2D_PauseSound                , METH_VARARGS, "Pause A Sound"                      },
@@ -34,13 +35,13 @@ PyMethodDef b2d::Python::B2DFunctions[] = {
 	{"SetSoundVolume"            , B2D_SetSoundVolume            , METH_VARARGS, "Set Sound Volume"                   },
 	{"SetSoundPan"               , B2D_SetSoundPan               , METH_VARARGS, "Set Sound Pan"                      },
 	{"SetSoundPitch"             , B2D_SetSoundPitch             , METH_VARARGS, "Set Sound Pitch"                    },
-					             					             										              
-	// Camera Functions          					             										              
+
+	// Camera Functions
 	{"MoveCamera"                , B2D_MoveCamera                , METH_VARARGS, "Move The Camera"                    },
 	{"TranslateCamera"           , B2D_TranslateCamera           , METH_VARARGS, "Translate The Camera"               },
 	{"ZoomCamera"                , B2D_ZoomCamera                , METH_VARARGS, "Zoom The Camera"                    },
-					     					     		  	      							   			             
-	// Font Functions    					     		  	      							   			             
+
+	// Font Functions
 	{"CreateFont"                , B2D_CreateFont                , METH_VARARGS, "Create A New Font"                  },
 	{"DrawFont"                  , B2D_DrawFont                  , METH_VARARGS, "Draw The Font"                      },
 	{"MoveFont"                  , B2D_MoveFont                  , METH_VARARGS, "Move The Font"                      },
@@ -48,8 +49,8 @@ PyMethodDef b2d::Python::B2DFunctions[] = {
 	{"SetFontColour"             , B2D_SetFontColour             , METH_VARARGS, "Set The Font Colour"                },
 	{"SetFontSize"               , B2D_SetFontSize               , METH_VARARGS, "Set The Font Size"                  },
 	{"DestroyFont"               , B2D_DestroyFont               , METH_VARARGS, "Destroy The Font"                   },
-														         										             
-    // GUI Button Functions								         										             
+
+    // GUI Button Functions
 	{"CreateGUIButton"           , B2D_CreateGUIButton           , METH_VARARGS, "Create A New GUI Button"            },
 	{"MoveGUIButton"             , B2D_MoveGUIButton             , METH_VARARGS, "Move The GUI Button"                },
 	{"TranslateGUIButton"        , B2D_TranslateGUIButton        , METH_VARARGS, "Translate The GUI Button"           },
@@ -90,6 +91,7 @@ PyMethodDef b2d::Python::B2DFunctions[] = {
 	{"MoveSprite"                , B2D_MoveSprite                , METH_VARARGS, "Move Sprite"                        },
 	{"TranslateSprite"           , B2D_TranslateSprite           , METH_VARARGS, "Translate Sprite"                   },
 	{"ScaleSprite"               , B2D_ScaleSprite               , METH_VARARGS, "Scale Sprite"                       },
+	{"GetSpritePosition"         , B2D_GetSpritePosition         , METH_VARARGS, "Get The Sprites Current Position"   },
 	{"DestroySprite"             , B2D_DestroySprite             , METH_VARARGS, "Destroy The Sprite"                 },
 
 	// Path Finding Functions
@@ -106,7 +108,7 @@ PyMethodDef b2d::Python::B2DFunctions[] = {
 
 	// Collision Functions
 	{"GetCollision"              , B2D_GetCollision              , METH_VARARGS, "Get Collision"                      },
-	{NULL, NULL, 0, NULL} 
+	{NULL, NULL, 0, NULL}
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////

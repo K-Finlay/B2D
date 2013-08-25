@@ -18,13 +18,10 @@ namespace b2d{
 	PyObject* Python::B2D_CreatePathFinder (PyObject* Self, PyObject* Args){
 
 		// Create New Path Finder
-		PathFinder* path = new PathFinder;
+		PathFinder path;
 
 		// Add To List
-		pathList.push_back (*path);
-
-		// Delete Old Path
-		delete path;
+		pathList.push_back (path);
 
 		// Return Value
 		return Py_BuildValue ("i", pathList.size() - 1);
@@ -44,20 +41,17 @@ namespace b2d{
     	}
 
 		// Create New Node
-		Node* node = new Node;
+		Node node;
 
 		// Set Node Variables
-		node[0].x = x;
-		node[0].y = y;
-		node[0].isWalkable = isWalkable;
-		node[0].isChecked = false;
-		node[0].listPos = nodeList.size();
+		node.x = x;
+		node.y = y;
+		node.isWalkable = isWalkable;
+		node.isChecked = false;
+		node.listPos = nodeList.size();
 
 		// Add Node To List
-		nodeList.push_back (*node);
-
-		// Delete Old Node
-		delete node;
+		nodeList.push_back (node);
 
 		Py_RETURN_NONE;
 	}
@@ -68,15 +62,15 @@ namespace b2d{
 	PyObject* Python::B2D_CalculateAStar (PyObject* Self, PyObject* Args){
 
 		// Create Variables
-		int pathReference, nodeSize, startNode, endNode, mapWidth, mapHeight;
+		int pathReference, nodeSize, startNode, endNode, mapWidth, mapHeight, nodesBeforeEnd = 0;
 
 		// Look For Errors
-    	if (!PyArg_ParseTuple (Args, "iiiiii", &pathReference, &nodeSize, &startNode, &endNode, &mapWidth, &mapHeight)){
+    	if (!PyArg_ParseTuple (Args, "iiiiii|i", &pathReference, &nodeSize, &startNode, &endNode, &mapWidth, &mapHeight, &nodesBeforeEnd)){
     		ParsePyTupleError (__func__, __LINE__);
     	}
 
 		// Set Function
-		pathList[pathReference].CalculateAStar (Python::nodeList, nodeSize, startNode, endNode, mapWidth, mapHeight);
+		pathList[pathReference].CalculateAStar (Python::nodeList, nodeSize, startNode, endNode, mapWidth, mapHeight, nodesBeforeEnd);
 
 		Py_RETURN_NONE;
 	}
@@ -87,19 +81,19 @@ namespace b2d{
 	PyObject* Python::B2D_CalculateDijkstra (PyObject* Self, PyObject* Args){
 
 		// Create Variables
-		int pathReference, nodeSize, startNode, mapWidth, mapHeight; PyObject* endNode;
+		int pathReference, nodeSize, startNode, mapWidth, mapHeight, nodesBeforeEnd = 0; PyObject* endNode;
 
 		// Look For Errors
-    	if (!PyArg_ParseTuple (Args, "iiiOii", &pathReference, &nodeSize, &startNode, &endNode, &mapWidth, &mapHeight)){
+    	if (!PyArg_ParseTuple (Args, "iiiOii|i", &pathReference, &nodeSize, &startNode, &endNode, &mapWidth, &mapHeight, &nodesBeforeEnd)){
     		ParsePyTupleError (__func__, __LINE__);
     	}
 
 		std::vector <int> endPointVector = TupleToVector (endNode);
 
 		// Set Function
-		pathList[pathReference].CalculateDijkstra (Python::nodeList, nodeSize, startNode, endPointVector, mapWidth, mapHeight, 0);
+		int endPoint = pathList[pathReference].CalculateDijkstra (Python::nodeList, nodeSize, startNode, endPointVector, mapWidth, mapHeight, nodesBeforeEnd);
 
-		Py_RETURN_NONE;
+		return Py_BuildValue ("i", endPoint);
 	}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////

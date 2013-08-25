@@ -27,13 +27,10 @@ namespace b2d{
 		RGBA rgba = RGBA (colour);
 
 		// Create New Square
-		Square* square = new Square (Vector2::Point (x, y), width, height, rgba);
+		Square square (Vector2::Point (x, y), width, height, rgba);
 
 		// Add Square To List
-		primitiveSquareList.push_back (*square);
-
-		// Delete Square
-		delete square;
+		primitiveSquareList.push_back (square);
 
 		// Set Function
 		Python::primitiveSquareList[Python::primitiveSquareList.size() - 1].Update();

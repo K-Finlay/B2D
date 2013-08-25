@@ -25,13 +25,10 @@ namespace b2d{
 		RGBA rgba = RGBA (colour);
 
 		// Create New GUI Button
-		GUIButton* button = new GUIButton (x, y, width, height, texNorm, texOver, rgba);
+		GUIButton button (x, y, width, height, texNorm, texOver, rgba);
 
 		// Add Button To List
-		Python::guiButtonList.push_back (*button);
-
-		// Delete Button
-		delete button;
+		Python::guiButtonList.push_back (button);
 
 		// Set Function
 		return Py_BuildValue ("i", Python::guiButtonList.size() - 1);

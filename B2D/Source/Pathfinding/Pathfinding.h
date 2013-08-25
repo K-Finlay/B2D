@@ -22,13 +22,12 @@ namespace b2d{
 		// Variables
 		std::vector <Node> openList;
 		std::vector <Node> closedList;
-		static std::vector <Sprite> spriteList;
 		std::vector <Vector2::Point> path;
 		int nodeSize;
 
 		// Functions
-		void CalculateAStar (std::vector <Node> NodeList, int NodeSize, int StartNode, int EndNode, int MapWidth, int MapHeight, int StripNodes = 0);
-		void CalculateDijkstra (std::vector <Node> NodeList, int NodeSize, int StartNode, std::vector <int> EndNode, int MapWidth, int MapHeight, int StripNodes = 0);
+		void CalculateAStar (std::vector <Node> NodeList, int NodeSize, int StartNode, int EndNode, int MapWidth, int MapHeight, int NodesBeforeEnd = 0);
+		int CalculateDijkstra (std::vector <Node> NodeList, int NodeSize, int StartNode, std::vector <int> EndNode, int MapWidth, int MapHeight, int NodesBeforeEnd = 0);
 		void FollowPath (Vector2::Point &Vector, float speed);
 	};
 }

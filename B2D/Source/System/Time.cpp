@@ -1,10 +1,15 @@
 #include "System.h"
-#include <time.h>
 #include <iostream>
+
+#if defined (_WIN32) || defined (_WIN64)
+    #include <time.h>
+#elif defined (__gnu_linux__) || defined (__APPLE__)
+    #include <sys/time.h>
+#endif
 
 ///////////////////////////////////////////
 //     This File Handles Everything      //
-//             Time Related              // 
+//             Time Related              //
 ///////////////////////////////////////////
 
 namespace b2d{
@@ -52,9 +57,28 @@ namespace b2d{
 	// Get Delta Time
 	void Time::GetDeltaTime(){
 
-		Time::currentTime = clock();
-		Time::deltaTime = (Time::currentTime - Time::previousTime) / CLOCKS_PER_SEC;
-		Time::previousTime = Time::currentTime;
+        #if defined (_WIN32) || defined (_WIN64)
+
+            Time::currentTime = clock();
+            Time::deltaTime = (Time::currentTime - Time::previousTime) / CLOCKS_PER_SEC;
+            Time::previousTime = Time::currentTime;
+
+        #elif defined (__gnu_linux__) || defined (__APPLE__)
+
+            timeval t;
+            gettimeofday (&t, NULL);
+            Time::currentTime = t.tv_usec;
+            Time::deltaTime = (Time::currentTime - Time::previousTime) / 100000 / 10;
+            Time::previousTime = Time::currentTime;
+
+            if (Time::deltaTime < 0){
+
+                Time::currentTime = t.tv_usec;
+                Time::deltaTime = (Time::currentTime - Time::previousTime) / 100000 / 10;
+                Time::previousTime = Time::currentTime;
+            }
+
+        #endif
 	}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////

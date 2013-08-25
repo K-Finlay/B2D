@@ -12,6 +12,7 @@ namespace b2d{
 	public:
 
 		// Constructors
+		Font();
 		Font (const char* FontPath, char* Text, int Size, Vector2::Point Position, RGBA Colour = RGBA (1, 1, 1, 1), bool IsStatic = true, int FontType = 0);
 
 		// Functions

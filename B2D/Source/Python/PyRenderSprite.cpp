@@ -27,13 +27,10 @@ namespace b2d{
 		RGBA rgba = RGBA (colour);
 
 		// Create New Sprite
-		Sprite* sprite = new Sprite (Vector2::Point (x, y), width, height, texturePath, colour);
+		Sprite sprite (Vector2::Point (x, y), width, height, texturePath, colour);
 
 		// Add Sprite To List
-		Python::spriteList.push_back (*sprite);
-
-		// Delete Sprite
-		delete sprite;
+		Python::spriteList.push_back (sprite);
 
 		// Set Function
 		return Py_BuildValue ("i", Python::spriteList.size() - 1);
@@ -219,6 +216,23 @@ namespace b2d{
 		// Set Function
 		Python::spriteList[spriteReference].Scale (x, y);
 		Py_RETURN_NONE;
+	}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// Get The Sprites Position
+	PyObject* Python::B2D_GetSpritePosition (PyObject* Self, PyObject* Args){
+
+		// Create Variables
+		int spriteReference;
+
+		// Look For Errors
+    	if (!PyArg_ParseTuple (Args, "i", &spriteReference)){
+    		ParsePyTupleError (__func__, __LINE__);
+    	}
+
+		// Return Position
+		return Py_BuildValue ("ff", spriteList[spriteReference].position.x, spriteList[spriteReference].position.y);
 	}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -9,7 +9,7 @@
 namespace b2d{
 
 	// Declare Variable
-	std::vector <Sound> Python::soundList;
+    std::vector <Sound> Python::soundList;
 
 	// Create A New Sound
 	PyObject* Python::B2D_CreateSound (PyObject* Self, PyObject* Args){
@@ -23,16 +23,13 @@ namespace b2d{
     	}
 
 		// Create New Sound
-		Sound* sound = new Sound (fileName, looping, loadIntoMemory);
+        Sound sound (fileName, looping, loadIntoMemory);
 
 		// Add Sound To List
-		Python::soundList.push_back (*sound);
-
-		// Delete Old Sound
-		delete sound;
+        Python::soundList.push_back (sound);
 
 		// Set Function
-		return Py_BuildValue ("i", Python::soundList.size() - 1);
+        return Py_BuildValue ("i", Python::soundList.size() - 1);
 	}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -49,7 +46,7 @@ namespace b2d{
     	}
 
 		// Set Function
-		Python::soundList[soundReference].Play();
+        Python::soundList[soundReference].Play();
 		Py_RETURN_NONE;
 	}
 
@@ -67,7 +64,7 @@ namespace b2d{
     	}
 
 		// Set Function
-		Python::soundList[soundReference].Pause();
+        Python::soundList[soundReference].Pause();
 		Py_RETURN_NONE;
 	}
 
@@ -85,7 +82,7 @@ namespace b2d{
     	}
 
 		// Set Function
-		Python::soundList[soundReference].Stop();
+        Python::soundList[soundReference].Stop();
 		Py_RETURN_NONE;
 	}
 
@@ -103,7 +100,7 @@ namespace b2d{
     	}
 
 		// Set Function
-		Python::soundList[soundReference].SetVolume (volume);
+        Python::soundList[soundReference].SetVolume (volume);
 		Py_RETURN_NONE;
 	}
 
@@ -121,7 +118,7 @@ namespace b2d{
     	}
 
 		// Set Function
-		Python::soundList[soundReference].SetPan (pan);
+        Python::soundList[soundReference].SetPan (pan);
 		Py_RETURN_NONE;
 	}
 
@@ -139,7 +136,7 @@ namespace b2d{
     	}
 
 		// Set Function
-		Python::soundList[soundReference].SetPitch (pitch);
+        Python::soundList[soundReference].SetPitch (pitch);
 		Py_RETURN_NONE;
 	}
 }

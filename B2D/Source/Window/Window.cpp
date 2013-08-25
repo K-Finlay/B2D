@@ -1,6 +1,4 @@
 #include <GL/glew.h>
-#include <GL/wglew.h>
-#include <Windows.h>
 #include <GL/glfw.h>
 #include "Window.h"
 #include "../System/System.h"

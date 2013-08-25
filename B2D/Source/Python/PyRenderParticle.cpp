@@ -28,13 +28,10 @@ namespace b2d{
 		RGBA rgba = RGBA (colour);
 
 		// Create New Particle Emitter
-		ParticleEmitterPoint* emitter = new ParticleEmitterPoint (Vector2::Point (x, y), texturePath, fadeRate, rgba);
+		ParticleEmitterPoint emitter (Vector2::Point (x, y), texturePath, fadeRate, rgba);
 
 		// Add Emitter To List
-		Python::particlePointList.push_back (*emitter);
-
-		// Delete Emitter
-		delete emitter;
+		Python::particlePointList.push_back (emitter);
 
 		// Set Function
 		return Py_BuildValue ("i", Python::particlePointList.size() - 1);

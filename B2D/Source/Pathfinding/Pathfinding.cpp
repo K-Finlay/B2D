@@ -1,21 +1,18 @@
 #include "Pathfinding.h"
 #include <VML/VML.h>
+#include <algorithm>
 
 namespace b2d{
 
-	std::vector <Sprite> PathFinder::spriteList;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	// Calculate The Path
-	void PathFinder::CalculateAStar (std::vector <Node> NodeList, int NodeSize, int StartNode, int EndNode, int MapWidth, int MapHeight, int StripNodes){
+	void PathFinder::CalculateAStar (std::vector <Node> NodeList, int NodeSize, int StartNode, int EndNode, int MapWidth, int MapHeight, int NodesBeforeEnd){
 
 		// Set Variables
 		std::vector <Node> tempNodeList = NodeList;
 		Node currentNode = tempNodeList[StartNode];
 		PathFinder::nodeSize = NodeSize;
 		bool hasReachedEnd = false;
-		float lowestScore = 0;
+		float lowestScore = 99999999.f;
 		int lowestNode = 0, moves = 1;
 
 		// Main Loop
@@ -55,7 +52,6 @@ namespace b2d{
 					// Calc Score
 					tempNodeList[ind - MapWidth].gScore = moves;
 					tempNodeList[ind - MapWidth].hScore = Vector2::Magnitude ((float) tempNodeList[ind - MapWidth].x, (float) tempNodeList[ind - MapWidth].y, (float) tempNodeList[EndNode].x, (float) tempNodeList[EndNode].y);
-					tempNodeList[ind - MapWidth].hScore *= 2;
 
 					tempNodeList[ind - MapWidth].totalScore = tempNodeList[ind - MapWidth].gScore + tempNodeList[ind - MapWidth].hScore;
 					
@@ -74,7 +70,6 @@ namespace b2d{
 					// Calc Score
 					tempNodeList[ind + MapWidth].gScore = moves;
 					tempNodeList[ind + MapWidth].hScore = Vector2::Magnitude ((float) tempNodeList[ind + MapWidth].x, (float) tempNodeList[ind + MapWidth].y, (float) tempNodeList[EndNode].x, (float) tempNodeList[EndNode].y);
-					tempNodeList[ind + MapWidth].hScore *= 2;
 
 					tempNodeList[ind + MapWidth].totalScore = tempNodeList[ind + MapWidth].gScore + tempNodeList[ind + MapWidth].hScore;
 					
@@ -93,7 +88,6 @@ namespace b2d{
 					// Calc Score
 					tempNodeList[ind - 1].gScore = moves;
 					tempNodeList[ind - 1].hScore = Vector2::Magnitude ((float) tempNodeList[ind - 1].x, (float) tempNodeList[ind - 1].y, (float) tempNodeList[EndNode].x, (float) tempNodeList[EndNode].y);
-					tempNodeList[ind - 1].hScore *= 2;
 
 					tempNodeList[ind - 1].totalScore = tempNodeList[ind - 1].gScore + tempNodeList[ind - 1].hScore;
 					
@@ -112,7 +106,6 @@ namespace b2d{
 					// Calc Score
 					tempNodeList[ind + 1].gScore = moves;
 					tempNodeList[ind + 1].hScore = Vector2::Magnitude ((float) tempNodeList[ind + 1].x, (float) tempNodeList[ind + 1].y, (float) tempNodeList[EndNode].x, (float) tempNodeList[EndNode].y);
-					tempNodeList[ind + 1].hScore *= 2;
 
 					tempNodeList[ind + 1].totalScore = tempNodeList[ind + 1].gScore + tempNodeList[ind + 1].hScore;
 
@@ -138,24 +131,24 @@ namespace b2d{
 					// Check If The Current Node Has Returned To The Start 
 					if (currentNode.x == tempNodeList[StartNode].x && currentNode.y == tempNodeList[StartNode].y){
 
+						// Check For Nodes Before End
+						if (NodesBeforeEnd > 0 && returnVector.size() > 1){
+
+							std::reverse (returnVector.begin(), returnVector.end());
+
+							for (int t = 0; t < NodesBeforeEnd; ++t){
+								returnVector.pop_back();
+							}
+
+							std::reverse (returnVector.begin(), returnVector.end());
+						}
+
 						openList.clear();
 						closedList.clear();
 						hasReachedEnd = true;
 					}
 
 					else{
-
-						// Remove Unneeded Nodes
-						for (int i = 0; i < StripNodes; ++i){
-
-							if (currentNode.x == tempNodeList[currentNode.parent].x && tempNodeList[currentNode.parent].x == tempNodeList[tempNodeList[currentNode.parent].parent].x){
-						    	currentNode.parent = tempNodeList[currentNode.parent].parent;
-						    }
-
-							else if (currentNode.y == tempNodeList[currentNode.parent].y && tempNodeList[currentNode.parent].y == tempNodeList[tempNodeList[currentNode.parent].parent].y){
-								currentNode.parent = tempNodeList[currentNode.parent].parent;
-							}
-						}
 
 						// Add Current Node To Return Vector, And Set Current Node As It's Parent
 						returnVector.push_back (Vector2::Point ((float) currentNode.x * NodeSize, (float) currentNode.y * NodeSize));
@@ -175,7 +168,7 @@ namespace b2d{
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// Calculate Dijkstra's
-	void PathFinder::CalculateDijkstra (std::vector <Node> NodeList, int NodeSize, int StartNode, std::vector <int> EndNode, int MapWidth, int MapHeight, int StripNodes){
+	int PathFinder::CalculateDijkstra (std::vector <Node> NodeList, int NodeSize, int StartNode, std::vector <int> EndNode, int MapWidth, int MapHeight, int NodesBeforeEnd){
 
 		// Set Variables
 		std::vector <Node> tempNodeList = NodeList;
@@ -284,12 +277,25 @@ namespace b2d{
 			    
 			    	// Create The Return Vector
 			    	std::vector <Vector2::Point> returnVector;
+					int returnNode = currentNode.listPos;
 			    
 			    	// Loop Back Through Path
 			    	while (hasReachedEnd == false){
 			    		
 			    		// Check If The Current Node Has Returned To The Start 
 			    		if (currentNode.x == tempNodeList[StartNode].x && currentNode.y == tempNodeList[StartNode].y){
+
+						// Check For Nodes Before End
+						if (NodesBeforeEnd > 0 && returnVector.size() > 1){
+
+							std::reverse (returnVector.begin(), returnVector.end());
+
+							for (int t = 0; t < NodesBeforeEnd; ++t){
+								returnVector.pop_back();
+							}
+
+							std::reverse (returnVector.begin(), returnVector.end());
+						}
 			    
 			    			openList.clear();
 			    			closedList.clear();
@@ -297,22 +303,10 @@ namespace b2d{
 
 							// Reuturn The Final Path
 			    	        PathFinder::path = returnVector;
-			    	        return;
+							return returnNode;
 			    		}
 			    
 			    		else{
-			    
-			    			// Remove Unneeded Nodes
-			    			for (int i = 0; i < StripNodes; ++i){
-			    
-			    				if (currentNode.x == tempNodeList[currentNode.parent].x && tempNodeList[currentNode.parent].x == tempNodeList[tempNodeList[currentNode.parent].parent].x){
-			    			    	currentNode.parent = tempNodeList[currentNode.parent].parent;
-			    			    }
-			    
-			    				else if (currentNode.y == tempNodeList[currentNode.parent].y && tempNodeList[currentNode.parent].y == tempNodeList[tempNodeList[currentNode.parent].parent].y){
-			    					currentNode.parent = tempNodeList[currentNode.parent].parent;
-			    				}
-			    			}
 			    
 			    			// Add Current Node To Return Vector, And Set Current Node As It's Parent
 			    			returnVector.push_back (Vector2::Point ((float) currentNode.x * NodeSize, (float) currentNode.y * NodeSize));
