@@ -74,7 +74,9 @@ namespace b2d{
 		static PyObject* B2D_ScaleGUIButton (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_GetGUIButtonClick (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_GetGUIButtonOver (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_SwapGUIButtonTexture (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_DrawGUIButton (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_DestroyGUIButton (PyObject* Self, PyObject* Args);
 
 		// Particle Emitter Functions
 		static PyObject* B2D_CreateParticleEmitterPoint (PyObject* Self, PyObject* Args);
@@ -114,6 +116,7 @@ namespace b2d{
 		// Path Finding Functions
 		static PyObject* B2D_CreatePathFinder (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_PathFinderAddNode (PyObject* Self, PyObject* Args);
+		static PyObject* B2D_PathFinderChangeNodeState (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_CalculateAStar (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_CalculateDijkstra (PyObject* Self, PyObject* Args);
 		static PyObject* B2D_FollowPath (PyObject* Self, PyObject* Args);

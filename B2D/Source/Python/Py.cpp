@@ -23,9 +23,9 @@ PyMethodDef b2d::Python::B2DFunctions[] = {
 	{"WaitForSeconds"            , B2D_WaitForSeconds            , METH_VARARGS, "Wait For Seconds"                   },
 
 	// System Functions
-	//{"GetDisplayWidth"           , B2D_GetDisplayWidth           , METH_VARARGS, "Get The Display Width"              },
-	//{"GetDisplayHeight"          , B2D_GetDisplayHeight          , METH_VARARGS, "Get The Display Height"             },
-	//{"GetDisplayPixels"          , B2D_GetDisplayPixels          , METH_VARARGS, "Get The Display Pixels"             },
+	{"GetDisplayWidth"           , B2D_GetDisplayWidth           , METH_VARARGS, "Get The Display Width"              },
+	{"GetDisplayHeight"          , B2D_GetDisplayHeight          , METH_VARARGS, "Get The Display Height"             },
+	{"GetDisplayPixels"          , B2D_GetDisplayPixels          , METH_VARARGS, "Get The Display Pixels"             },
 
 	// Sound Functions
 	{"CreateSound"               , B2D_CreateSound               , METH_VARARGS, "Create A New Sound"                 },
@@ -57,7 +57,9 @@ PyMethodDef b2d::Python::B2DFunctions[] = {
 	{"ScaleGUIButton"            , B2D_ScaleGUIButton            , METH_VARARGS, "Scale The GUI Button"               },
 	{"GetGUIButtonClick"         , B2D_GetGUIButtonClick         , METH_VARARGS, "Get Button Clicked"                 },
 	{"GetGUIButtonOver"          , B2D_GetGUIButtonOver          , METH_VARARGS, "Get Mouse Over Button"              },
+	{"SwapGUIButtonTexture"      , B2D_SwapGUIButtonTexture      , METH_VARARGS, "Swap The GUI Button Texture"        },
 	{"DrawGUIButton"             , B2D_DrawGUIButton             , METH_VARARGS, "Draw GUI Button"                    },
+	{"DestroyGUIButton"          , B2D_DestroyGUIButton          , METH_VARARGS, "Destroy GUI Button"                 },
 
 	// Particle Effect Functions
 	{"CreateParticleEmitterPoint", B2D_CreateParticleEmitterPoint, METH_VARARGS, "Create A New Point Particle Emitter"},
@@ -97,6 +99,7 @@ PyMethodDef b2d::Python::B2DFunctions[] = {
 	// Path Finding Functions
 	{"CreatePathFinder"          , B2D_CreatePathFinder          , METH_VARARGS, "Create A Path Finder"               },
 	{"PathFinderAddNode"         , B2D_PathFinderAddNode         , METH_VARARGS, "Add Node To Path Finder"            },
+	{"PathFinderChangeNodeState" , B2D_PathFinderChangeNodeState , METH_VARARGS, "Change The Node State"              },
 	{"CalculateAStar"            , B2D_CalculateAStar            , METH_VARARGS, "Create AStar Path"                  },
 	{"CalculateDijkstra"         , B2D_CalculateDijkstra         , METH_VARARGS, "Create Dijkstra's Path"             },
 	{"FollowPath"                , B2D_FollowPath                , METH_VARARGS, "Follow The Selected Path"           },

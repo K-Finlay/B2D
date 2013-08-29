@@ -63,7 +63,7 @@ namespace b2d{
 
 			// Get Image Data
             BYTE *pixels = (BYTE*) FreeImage_GetBits (freeImageBitMap);
-            Texture::ConfigureTexture (pixels,  FreeImage_GetWidth (freeImageBitMap),  FreeImage_GetHeight (freeImageBitMap));           
+            Texture::ConfigureTexture (pixels,  FreeImage_GetWidth (freeImageBitMap),  FreeImage_GetHeight (freeImageBitMap));
 
 			// Unload Textures
             FreeImage_Unload(freeImageBitMap);

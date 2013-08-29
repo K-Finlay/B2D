@@ -124,6 +124,24 @@ namespace b2d{
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    // Swap The Button Texture
+    PyObject* Python::B2D_SwapGUIButtonTexture (PyObject* Self, PyObject* Args){
+
+		// Create Variables
+		int guiButtonReference; char* texNorm, *texOver;
+
+		// Look For Errors
+    	if (!PyArg_ParseTuple (Args, "iss", &guiButtonReference, &texNorm, &texOver)){
+    		ParsePyTupleError (__func__, __LINE__);
+    	}
+
+		// Set Function
+		Python::guiButtonList[guiButtonReference].SwapTexture (texNorm, texOver);
+		Py_RETURN_NONE;
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	// Draw The Button
 	PyObject* Python::B2D_DrawGUIButton (PyObject* Self, PyObject* Args){
 
@@ -137,6 +155,24 @@ namespace b2d{
 
 		// Set Function
 		Python::guiButtonList[guiButtonReference].Draw();
+		Py_RETURN_NONE;
+	}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // Destroy The GUI Button
+	PyObject* Python::B2D_DestroyGUIButton (PyObject* Self, PyObject* Args){
+
+		// Create Variables
+		int guiButtonReference;
+
+		// Look For Errors
+    	if (!PyArg_ParseTuple (Args, "i", &guiButtonReference)){
+    		ParsePyTupleError (__func__, __LINE__);
+    	}
+
+		// Set Function
+		Python::guiButtonList[guiButtonReference].Destroy();
 		Py_RETURN_NONE;
 	}
 }

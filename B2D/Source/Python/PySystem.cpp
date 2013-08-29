@@ -8,7 +8,7 @@
 
 namespace b2d{
 
-	/*// Get The Display Width
+	// Get The Display Width
 	PyObject* Python::B2D_GetDisplayWidth (PyObject* Self, PyObject* Args){
 
 		// Set Function
@@ -31,5 +31,5 @@ namespace b2d{
 
 		// Set Function
 		return Py_BuildValue ("i", System::GetDisplayPixels());
-	}*/
+	}
 }

@@ -50,7 +50,7 @@ namespace b2d{
     	}
 
 		// Set Function
-		Python::spriteList[spriteReference].Draw();
+        Python::spriteList[spriteReference].Draw();
 		Py_RETURN_NONE;
 	}
 

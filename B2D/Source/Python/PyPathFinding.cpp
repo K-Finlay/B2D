@@ -58,6 +58,25 @@ namespace b2d{
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    // Change Node State
+    PyObject* Python::B2D_PathFinderChangeNodeState (PyObject* Self, PyObject* Args){
+
+        // Create Variables
+		int nodeReference; bool isWalkable;
+
+		// Look For Errors
+    	if (!PyArg_ParseTuple (Args, "ib", &nodeReference, &isWalkable)){
+    		ParsePyTupleError (__func__, __LINE__);
+    	}
+
+    	// Set Function
+    	nodeList[nodeReference].isWalkable = isWalkable;
+
+    	Py_RETURN_NONE;
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	// Calculate AStar Path
 	PyObject* Python::B2D_CalculateAStar (PyObject* Self, PyObject* Args){
 
