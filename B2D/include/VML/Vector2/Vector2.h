@@ -1,10 +1,6 @@
 #ifndef VECTOR2_H
 #define VECTOR2_H
 
-#ifndef VML_EXP
-#define VML_EXP __declspec (dllexport)
-#endif
-
 namespace Vector2{
 
 	class Point{
@@ -24,14 +20,14 @@ namespace Vector2{
 		    Point::y = Y;
 		}
 
-		VML_EXP void SetPoint (float xPoint, float yPoint){
+         void SetPoint (float xPoint, float yPoint){
 
 			x = xPoint;
 			y = yPoint;
 		}
 
 		// Add Operator
-	    VML_EXP Point operator + (const Point &vector){
+         Point operator + (const Point &vector){
 
 			Point result;
 			result.x = x + vector.x;
@@ -41,7 +37,7 @@ namespace Vector2{
 		}
 
 		// Add Equals Operator
-		VML_EXP Point operator += (const Point &vector){
+         Point operator += (const Point &vector){
 
 			Point result;
 			result.x = x + vector.x;
@@ -51,7 +47,7 @@ namespace Vector2{
 		}
 
 		//Subtract Operator
-		VML_EXP Point operator - (const Point &vector){
+         Point operator - (const Point &vector){
 
 			Point result;
 			result.x = x - vector.x;
@@ -61,7 +57,7 @@ namespace Vector2{
 		}
 
 		// Subtract Equals Operator
-		VML_EXP Point operator -= (const Point &vector){
+         Point operator -= (const Point &vector){
 
 			Point result;
 			result.x = x - vector.x;
@@ -71,7 +67,7 @@ namespace Vector2{
 		}
 
 		//Multiply Operator
-		VML_EXP Point operator * (const Point &vector){
+         Point operator * (const Point &vector){
 
 			Point result;
 			result.x = x * vector.x;
@@ -81,7 +77,7 @@ namespace Vector2{
 		}
 
 		// Multiply Equals Operator
-		VML_EXP Point operator *= (const Point &vector){
+         Point operator *= (const Point &vector){
 
 			Point result;
 			result.x = x * vector.x;
@@ -91,7 +87,7 @@ namespace Vector2{
 		}
 
 		//Divide Operator
-		VML_EXP Point operator / (const Point &vector){
+         Point operator / (const Point &vector){
 
 			Point result;
 			result.x = x / vector.x;
@@ -101,7 +97,7 @@ namespace Vector2{
 		}
 
 		// Divide Equals Operator
-		VML_EXP Point operator /= (const Point &vector){
+         Point operator /= (const Point &vector){
 
 			Point result;
 			result.x = x / vector.x;
@@ -111,7 +107,7 @@ namespace Vector2{
 		}
 
 		// Is Equal To Operator
-		VML_EXP bool operator == (const Point &vector){
+         bool operator == (const Point &vector){
 
 			if (x == vector.x && y == vector.y){
 				return true;
@@ -123,7 +119,7 @@ namespace Vector2{
 		}
 
 		// Not Equal To Operator
-		VML_EXP bool operator != (const Point &vector){
+         bool operator != (const Point &vector){
 
 			if (x != vector.x || y != vector.y){
 				return true;
@@ -135,7 +131,7 @@ namespace Vector2{
 		}
 
 		// Greater Then Operator
-		VML_EXP bool operator > (const Point &vector){
+         bool operator > (const Point &vector){
 
 			if ((x + y) > (vector.x + vector.y)){
 				return true;
@@ -147,7 +143,7 @@ namespace Vector2{
 		}
 
 		// Greater Then Or Equal To Operator
-		VML_EXP bool operator >= (const Point &vector){
+         bool operator >= (const Point &vector){
 
 			if ((x + y) >= (vector.x + vector.y)){
 				return true;
@@ -159,7 +155,7 @@ namespace Vector2{
 		}
 
 		// Less Then Operator
-		VML_EXP bool operator < (const Point &vector){
+         bool operator < (const Point &vector){
 
 			if ((x + y) < (vector.x + vector.y)){
 				return true;
@@ -171,7 +167,7 @@ namespace Vector2{
 		}
 
 		// Less Then Or Equal To Operator
-		VML_EXP bool operator <= (const Point &vector){
+         bool operator <= (const Point &vector){
 
 			if ((x + y) <= (vector.x + vector.y)){
 				return true;
@@ -184,15 +180,15 @@ namespace Vector2{
 	};
 
 	// Vector2 Math Functions
-	VML_EXP float Magnitude (Point startPoint, Point endPoint);
-	VML_EXP float Magnitude (float startX, float startY, float endX, float endY); // Overloaded function for assignment 3. Remove later.
+     float Magnitude (Point startPoint, Point endPoint);
+     float Magnitude (float startX, float startY, float endX, float endY); // Overloaded function for assignment 3. Remove later.
 
-	VML_EXP float RotToPoint (Point startPoint, Point endPoint);
-	VML_EXP float RotToPoint (float startX, float startY, float endX, float endY); // Overloaded function for assignment 3. Remove later.
+     float RotToPoint (Point startPoint, Point endPoint);
+     float RotToPoint (float startX, float startY, float endX, float endY); // Overloaded function for assignment 3. Remove later.
 
-	VML_EXP Point Normalize (Point startPoint, Point endPoint);
-	VML_EXP float Dot (Point vectorA, Point vectorB);
-	VML_EXP Point Lerp (Point vectorA, Point vectorB, float value);
+     Point Normalize (Point startPoint, Point endPoint);
+     float Dot (Point vectorA, Point vectorB);
+     Point Lerp (Point vectorA, Point vectorB, float value);
 }
 
 #endif

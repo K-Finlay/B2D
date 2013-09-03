@@ -89,7 +89,7 @@ namespace b2d{
         glClearDepth (1.0);
         glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glClearColor (Colour.colour.x, Colour.colour.y, Colour.colour.z, Colour.colour.w);
-		glOrtho ((-Window::screenWidth * Camera::zoom) + Camera::position.x, (Window::screenWidth * Camera::zoom) + Camera::position.x, 
+		glOrtho ((-Window::screenWidth * Camera::zoom) + Camera::position.x, (Window::screenWidth * Camera::zoom) + Camera::position.x,
 			    (Window::screenHeight * Camera::zoom) + Camera::position.y, (-Window::screenHeight * Camera::zoom) + Camera::position.y, 0.0, 100);
 		glFlush();
 

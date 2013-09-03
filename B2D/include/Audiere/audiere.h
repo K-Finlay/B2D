@@ -27,6 +27,8 @@
 
 
 #include <vector>
+#include <cstdlib>
+#include <cstring>
 #include <string>
 
 #ifdef _MSC_VER
@@ -61,11 +63,8 @@
 #  endif
 #endif
 
-
-
 #define ADR_FUNCTION(ret) extern "C" ADR_DECL ret ADR_CALL
 #define ADR_METHOD(ret) virtual ret ADR_CALL
-
 
 namespace audiere {
 

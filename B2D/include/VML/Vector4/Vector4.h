@@ -5,10 +5,6 @@
 #include <iostream>
 #include <string>
 
-#ifndef VML_EXP
-#define VML_EXP __declspec (dllexport)
-#endif
-
 namespace Vector4{
 
 	class Point{
@@ -16,7 +12,7 @@ namespace Vector4{
 
 		float x, y, z, w;
 
-		VML_EXP void SetPoint (float xPoint, float yPoint, float zPoint, float wPoint){
+         void SetPoint (float xPoint, float yPoint, float zPoint, float wPoint){
 
 			x = xPoint;
 			y = yPoint;
@@ -25,16 +21,16 @@ namespace Vector4{
 		}
 	};
 
-	VML_EXP float Magnitude (Point startPoint, Point endPoint);
-	VML_EXP Point Normalize (Point startPoint, Point endPoint);
-	VML_EXP Point Lerp (Point vectorA, Point vectorB, float value);
+     float Magnitude (Point startPoint, Point endPoint);
+     Point Normalize (Point startPoint, Point endPoint);
+     Point Lerp (Point vectorA, Point vectorB, float value);
 }
 
 class RGBA{
 public:
 
-	VML_EXP RGBA();
-	VML_EXP RGBA (float r, float g, float b, float a){
+     RGBA();
+     RGBA (float r, float g, float b, float a){
 
 		colour.x = r;
 		colour.y = g;
@@ -42,7 +38,7 @@ public:
 		colour.w = a;
 	}
 
-	VML_EXP RGBA (const char* HexValue){
+     RGBA (const char* HexValue){
 
 		std::string value;
 

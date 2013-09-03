@@ -1,10 +1,6 @@
 #ifndef VECTOR3_H
 #define VECTOR3_H
 
-#ifndef VML_EXP
-#define VML_EXP __declspec (dllexport)
-#endif
-
 namespace Vector3{
 
 	class Point{
@@ -12,7 +8,7 @@ namespace Vector3{
 
 		float x, y, z;
 
-		VML_EXP void SetPoint (float xPoint, float yPoint, float zPoint){
+         void SetPoint (float xPoint, float yPoint, float zPoint){
 
 			x = xPoint;
 			y = yPoint;
@@ -20,7 +16,7 @@ namespace Vector3{
 		}
 
 		// Add Operator
-	    VML_EXP Point operator + (const Point &vector){
+         Point operator + (const Point &vector){
 
 			Point result;
 			result.x = x + vector.x;
@@ -31,7 +27,7 @@ namespace Vector3{
 		}
 
 		// Add Equals Operator
-		VML_EXP Point operator += (const Point &vector){
+         Point operator += (const Point &vector){
 
 			Point result;
 			result.x = x + vector.x;
@@ -42,7 +38,7 @@ namespace Vector3{
 		}
 
 		//Subtract Operator
-		VML_EXP Point operator - (const Point &vector){
+         Point operator - (const Point &vector){
 
 			Point result;
 			result.x = x - vector.x;
@@ -53,7 +49,7 @@ namespace Vector3{
 		}
 
 		// Subtract Equals Operator
-		VML_EXP Point operator -= (const Point &vector){
+         Point operator -= (const Point &vector){
 
 			Point result;
 			result.x = x - vector.x;
@@ -64,7 +60,7 @@ namespace Vector3{
 		}
 
 		//Multiply Operator
-		VML_EXP Point operator * (const Point &vector){
+         Point operator * (const Point &vector){
 
 			Point result;
 			result.x = x * vector.x;
@@ -75,7 +71,7 @@ namespace Vector3{
 		}
 
 		// Multiply Equals Operator
-		VML_EXP Point operator *= (const Point &vector){
+         Point operator *= (const Point &vector){
 
 			Point result;
 			result.x = x * vector.x;
@@ -86,7 +82,7 @@ namespace Vector3{
 		}
 
 		//Divide Operator
-		VML_EXP Point operator / (const Point &vector){
+         Point operator / (const Point &vector){
 
 			Point result;
 			result.x = x / vector.x;
@@ -97,7 +93,7 @@ namespace Vector3{
 		}
 
 		// Divide Equals Operator
-		VML_EXP Point operator /= (const Point &vector){
+         Point operator /= (const Point &vector){
 
 			Point result;
 			result.x = x / vector.x;
@@ -108,7 +104,7 @@ namespace Vector3{
 		}
 
 		// Is Equal To Operator
-		VML_EXP bool operator == (const Point &vector){
+         bool operator == (const Point &vector){
 
 			if (x == vector.x && y == vector.y && z == vector.z){
 				return true;
@@ -120,7 +116,7 @@ namespace Vector3{
 		}
 
 		// Not Equal To Operator
-		VML_EXP bool operator != (const Point &vector){
+         bool operator != (const Point &vector){
 
 			if (x != vector.x || y != vector.y || z != vector.z){
 				return true;
@@ -132,7 +128,7 @@ namespace Vector3{
 		}
 
 		// Greater Then Operator
-		VML_EXP bool operator > (const Point &vector){
+         bool operator > (const Point &vector){
 
 			if ((x + y + z) > (vector.x + vector.y + vector.z)){
 				return true;
@@ -144,7 +140,7 @@ namespace Vector3{
 		}
 
 		// Greater Then Or Equal To Operator
-		VML_EXP bool operator >= (const Point &vector){
+         bool operator >= (const Point &vector){
 
 			if ((x + y + z) >= (vector.x + vector.y + vector.z)){
 				return true;
@@ -156,7 +152,7 @@ namespace Vector3{
 		}
 
 		// Less Then Operator
-		VML_EXP bool operator < (const Point &vector){
+         bool operator < (const Point &vector){
 
 			if ((x + y + z) < (vector.x + vector.y + vector.z)){
 				return true;
@@ -168,7 +164,7 @@ namespace Vector3{
 		}
 
 		// Less Then Or Equal To Operator
-		VML_EXP bool operator <= (const Point &vector){
+         bool operator <= (const Point &vector){
 
 			if ((x + y + z) <= (vector.x + vector.y + vector.z)){
 				return true;
@@ -180,11 +176,11 @@ namespace Vector3{
 		}
 	};
 
-	VML_EXP float Magnitude (Point startPoint, Point endPoint);
-	VML_EXP Point Normalize (Point startPoint, Point endPoint);
-	VML_EXP float Dot (Point vectorA, Point vectorB);
-	VML_EXP Point Lerp (Point vectorA, Point vectorB, float value);
-	VML_EXP Point CrossProduct (Point vectorA, Point vectorB);
+     float Magnitude (Point startPoint, Point endPoint);
+     Point Normalize (Point startPoint, Point endPoint);
+     float Dot (Point vectorA, Point vectorB);
+     Point Lerp (Point vectorA, Point vectorB, float value);
+     Point CrossProduct (Point vectorA, Point vectorB);
 }
 
 #endif

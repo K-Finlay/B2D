@@ -1,0 +1,46 @@
+#! /bin/bash
+clear
+
+# Make Lib
+premake gmake Debug
+make
+
+# Create Temp Dir
+cd ./lib
+mkdir ../temp
+
+# Copy Libs
+cp libVML.a ../temp/lib01.a
+cp libftgl.a ../temp/lib02.a
+cp libGLEW.a ../temp/lib03.a
+cp libglfw.a ../temp/lib04.a
+cp libaudiere.a ../temp/lib05.a
+cp libfreetype.a ../temp/lib06.a
+cp libfreeimage.a ../temp/lib07.a
+
+cd ..
+cp libB2D.a ./temp/lib08.a
+
+cd ./temp
+
+# Extract Libs
+ar -x lib01.a
+ar -x lib02.a
+ar -x lib03.a
+ar -x lib04.a
+ar -x lib05.a
+ar -x lib06.a
+ar -x lib07.a
+ar -x lib08.a
+
+# Build Final Lib
+ar -r libB2D.a *.o
+cp libB2D.a ../
+
+# Clean Up
+cd ..
+rm -r ./temp
+rm -r ./B2D_Build
+rm Makefile
+
+echo "--Build Complete--"
