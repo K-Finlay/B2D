@@ -6,6 +6,7 @@ The Black Rain 2D Library (B2D) is an easy to use, 2D game framework for C++.
 Features
 - Fully Open Source.
 - Well Commented, Easy To Understand Code.
+- Cross Platform.
 - Extremely Fast Rendering.
 - Built In Primitive And Sprite Classes.
 - Easy Sprite Animation.
